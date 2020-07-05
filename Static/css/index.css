@@ -1,7 +1,36 @@
-main {
-  height: 100vh;
+/*
+=============== 
+Variables
+===============
+*/
+@import url("https://fonts.googleapis.com/css?family=Oswald|Sacramento&display=swap");
+/*
+=============== 
+Media quereys/animations
+===============
+*/
+@-webkit-keyframes animate {
+  0%, 100% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 300% 0;
+  }
+}
+@keyframes animate {
+  0%, 100% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 300% 0;
+  }
 }
 
+/*
+=============== 
+Page transitions
+===============
+*/
 .transition-fade {
   opacity: 1;
   -webkit-transition: 1s;
@@ -20,5 +49,183 @@ html.is-leaving .transition-fade {
   opacity: 0;
   -webkit-transform: translateY(0);
           transform: translateY(0);
+}
+
+/*
+=============== 
+Main Menu
+===============
+*/
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  letter-spacing: 1.5px;
+}
+
+.btn {
+  background: rgba(3, 0, 30, 0.5);
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+main {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: linear-gradient(45deg, #03001E, #7303C0, #EC38BC);
+}
+
+main h1 {
+  font-family: "Sacramento", cursive;
+  font-weight: bolder;
+}
+
+main article {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+  grid-gap: 1em;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main article button, main article a {
+  overflow: hidden;
+  position: relative;
+  font-family: "Oswald", sans-serif;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  color: #EC38BC;
+  padding: .5em;
+  -webkit-transition: .3s linear;
+  transition: .3s linear;
+  text-transform: uppercase;
+}
+
+main article button:hover, main article button:focus, main article a:hover, main article a:focus {
+  color: #03001E;
+  background: #EC38BC;
+  -webkit-box-shadow: 0 0 10px #EC38BC, 0 0 40px #EC38BC, 0 0 80px #EC38BC;
+          box-shadow: 0 0 10px #EC38BC, 0 0 40px #EC38BC, 0 0 80px #EC38BC;
+  -webkit-transition-delay: 1s;
+          transition-delay: 1s;
+}
+
+main article button:hover span:nth-child(1), main article a:hover span:nth-child(1) {
+  left: 100%;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+main article button:hover span:nth-child(2), main article a:hover span:nth-child(2) {
+  top: 100%;
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transition-delay: 0.25s;
+          transition-delay: 0.25s;
+}
+
+main article button:hover span:nth-child(3), main article a:hover span:nth-child(3) {
+  right: 100%;
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transition-delay: .5s;
+          transition-delay: .5s;
+}
+
+main article button:hover span:nth-child(4), main article a:hover span:nth-child(4) {
+  bottom: 100%;
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transition-delay: .75s;
+          transition-delay: .75s;
+}
+
+main article button span:nth-child(1), main article a span:nth-child(1) {
+  top: 0;
+  left: -100%;
+  background: -webkit-gradient(linear, left top, right top, from(transparent), to(#EC38BC));
+  background: linear-gradient(90deg, transparent, #EC38BC);
+  height: 2px;
+  width: 100%;
+}
+
+main article button span:nth-child(2), main article a span:nth-child(2) {
+  top: -100%;
+  right: 0%;
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#EC38BC));
+  background: linear-gradient(180deg, transparent, #EC38BC);
+  height: 100%;
+  width: 2px;
+}
+
+main article button span:nth-child(3), main article a span:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  background: -webkit-gradient(linear, right top, left top, from(transparent), to(#EC38BC));
+  background: linear-gradient(270deg, transparent, #EC38BC);
+  height: 2px;
+  width: 100%;
+}
+
+main article button span:nth-child(4), main article a span:nth-child(4) {
+  bottom: -100%;
+  left: 0%;
+  background: -webkit-gradient(linear, left top, right top, from(transparent), to(#EC38BC));
+  background: linear-gradient(90deg, transparent, #EC38BC);
+  height: 100%;
+  width: 2px;
+}
+
+a span:nth-child(1), button span:nth-child(1) {
+  position: absolute;
+  display: block;
+}
+
+a span:nth-child(2), button span:nth-child(2) {
+  position: absolute;
+  display: block;
+}
+
+a span:nth-child(3), button span:nth-child(3) {
+  position: absolute;
+  display: block;
+}
+
+a span:nth-child(4), button span:nth-child(4) {
+  position: absolute;
+  display: block;
+}
+
+.selected {
+  color: #03001E;
+  background: #EC38BC;
+  -webkit-box-shadow: 0 0 10px #EC38BC, 0 0 40px #EC38BC, 0 0 80px #EC38BC;
+          box-shadow: 0 0 10px #EC38BC, 0 0 40px #EC38BC, 0 0 80px #EC38BC;
 }
 /*# sourceMappingURL=index.css.map */
