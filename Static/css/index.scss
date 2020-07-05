@@ -1,8 +1,19 @@
+main{
+     height: 100vh;
+}
+
 .transition-fade{
      opacity: 1;
      transition: 1s;
+     transform: translateY(0);
 }
 
 html.is-animating .transition-fade{
+     opacity: 1;
+     transform: translateY(100%);
+}
+
+html.is-leaving .transition-fade{
      opacity: 0;
+     transform: translateY(0);
 }
