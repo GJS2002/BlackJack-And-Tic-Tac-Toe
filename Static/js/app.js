@@ -1,1 +1,1 @@
-console.log('poop');
+const swup = new Swup();

@@ -1,5 +1,10 @@
-body {
-  background: black;
-  color: white;
+.transition-fade {
+  opacity: 1;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+html.is-animating .transition-fade {
+  opacity: 0;
 }
 /*# sourceMappingURL=index.css.map */
