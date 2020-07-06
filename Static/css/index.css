@@ -80,39 +80,119 @@ Main Menu
 
 .detail-1 {
   position: fixed;
-  opacity: .1;
+  opacity: .07;
+  z-index: -1;
+  height: 40%;
+}
+
+@media (min-width: 568px) and (max-width: 823px) {
+  .detail-1 {
+    height: 70%;
+    margin-left: 2em;
+    margin-right: 2em;
+  }
+}
+
+@media (max-width: 1024px) and (min-height: 768px) {
+  .detail-1 {
+    height: 60%;
+  }
 }
 
 .detail-2 {
   position: fixed;
-  opacity: .1;
+  opacity: .07;
+  z-index: -1;
+  height: 40%;
+}
+
+@media (min-width: 568px) and (max-width: 823px) {
+  .detail-2 {
+    height: 70%;
+    margin-left: 2em;
+    margin-right: 2em;
+  }
+}
+
+@media (max-width: 1024px) and (min-height: 768px) {
+  .detail-2 {
+    height: 60%;
+  }
 }
 
 .detail-3 {
   position: fixed;
-  opacity: .1;
+  opacity: .07;
+  z-index: -1;
+  height: 40%;
+}
+
+@media (min-width: 568px) and (max-width: 823px) {
+  .detail-3 {
+    height: 70%;
+    margin-left: 2em;
+    margin-right: 2em;
+  }
+}
+
+@media (max-width: 1024px) and (min-height: 768px) {
+  .detail-3 {
+    height: 60%;
+  }
 }
 
 .detail-4 {
   position: fixed;
-  opacity: .1;
+  opacity: .07;
+  z-index: -1;
+  height: 40%;
+}
+
+@media (min-width: 568px) and (max-width: 823px) {
+  .detail-4 {
+    height: 70%;
+    margin-left: 2em;
+    margin-right: 2em;
+  }
+}
+
+@media (max-width: 1024px) and (min-height: 768px) {
+  .detail-4 {
+    height: 60%;
+  }
 }
 
 .detail-5 {
   position: fixed;
-  opacity: .1;
+  opacity: .07;
+  z-index: -1;
+  height: 40%;
+}
+
+@media (min-width: 568px) and (max-width: 823px) {
+  .detail-5 {
+    height: 70%;
+    margin-left: 2em;
+    margin-right: 2em;
+  }
+}
+
+@media (max-width: 1024px) and (min-height: 768px) {
+  .detail-5 {
+    height: 60%;
+  }
 }
 
 .detail-1 {
-  left: -20%;
-  bottom: -20%;
+  left: -10%;
+  bottom: -10%;
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
 }
 
 .detail-2 {
   top: 20%;
-  right: -30%;
+  right: -20%;
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
 }
@@ -175,9 +255,14 @@ main {
 main h1 {
   text-align: center;
   font-family: "Sacramento", cursive;
-  font-weight: bolder;
   font-size: 3.5em;
   margin-bottom: 1em;
+}
+
+@media (max-width: 1024px) and (min-height: 768px) {
+  main h1 {
+    font-size: 7em;
+  }
 }
 
 main article {
@@ -193,6 +278,15 @@ main article {
           align-items: center;
 }
 
+@media (min-width: 568px) and (max-width: 823px) {
+  main article {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+    -ms-grid-rows: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+  }
+}
+
 main article button, main article a {
   overflow: hidden;
   position: relative;
@@ -205,6 +299,12 @@ main article button, main article a {
   -webkit-transition: .3s linear;
   transition: .3s linear;
   text-transform: uppercase;
+}
+
+@media (max-width: 1024px) and (min-height: 768px) {
+  main article button, main article a {
+    font-size: 2em;
+  }
 }
 
 main article button:hover, main article button:focus, main article a:hover, main article a:focus {

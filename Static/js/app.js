@@ -9,8 +9,8 @@ btns.forEach(btn => {
           let theBtn = e.currentTarget;
           btns.forEach(btn => {btn.classList.remove('selected')});
           theBtn.classList.add("selected");
-     })
-})
+     });
+});
 
 
 

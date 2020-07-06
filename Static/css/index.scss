@@ -31,6 +31,17 @@ Media quereys/animations
      }
 }
 
+@mixin mobileSide{
+     @media (min-width: 568px) and (max-width: 823px){
+          @content;
+     }
+}
+
+@mixin ipadSmall{
+     @media (max-width: 1024px) and (min-height: 768px){
+          @content;
+     }
+}
 
 /*
 =============== 
@@ -84,20 +95,33 @@ Main Menu
 @for $i from 1 to 6 {
      .detail-#{$i}{
          position: fixed;
-         opacity: .1; 
+         opacity: .07; 
+         z-index: -1;
+         height: 40%;
+          @include mobileSide{
+               height: 70%;
+               margin-left: 2em;
+               margin-right: 2em;
+          }
+          
+          @include ipadSmall{
+               height: 60%;
+          }
      }
 }
 
 .detail-{
+
      &1{
-          left: -20%;
-          bottom: -20%;
+          left: -10%;
+          bottom: -10%;
           transform: rotate(45deg);
+          
      }
 
      &2{
           top: 20%;
-          right: -30%;
+          right: -20%;
           transform: rotate(-45deg);
      }
 
@@ -143,9 +167,12 @@ main{
      h1{
           text-align: center;
           font-family: $ff-primary;
-          font-weight: bolder;
           font-size: 3.5em;
           margin-bottom: 1em;
+
+          @include ipadSmall {
+               font-size: 7em;
+          }
      }
 
      article{
@@ -154,6 +181,12 @@ main{
           grid-template-rows: 1fr 1fr 1fr 1fr;
           grid-gap: 1em;
           align-items: center;
+
+          @include mobileSide {
+               grid-template-columns: 1fr 1fr;
+               grid-template-rows: 1fr 1fr;
+          }
+          
           
      
           button, a{
@@ -167,6 +200,9 @@ main{
                transition: .3s linear;
                text-transform: uppercase;
                
+               @include ipadSmall{
+                    font-size: 2em;
+               }
                
                &:hover, &:focus{
                     color: $color1;
