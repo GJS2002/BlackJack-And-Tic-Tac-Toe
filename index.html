@@ -10,19 +10,19 @@
      <title>Main Menu</title>
 </head>
 <body>
-     <main id="swup" class="transition-fade">
+     <main id="swup" class="transition-fade" >
           <h1>Main Menu</h1>
           
           <article>
                <header class="heading1">Mode</header>
-               <button data-id="bot" class="btn btn-bot ">
+               <button data-id="bot" class="btn btn-bot selected" onclick="btnEvents(this)">
                     <span></span>
                     <span></span>
                     <span></span>
                     <span></span>
                     Play against Bot
                </button>
-               <button data-id="player" class="btn btn-player">
+               <button data-id="player" class="btn btn-player" onclick="btnEvents(this)">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -37,7 +37,7 @@
                     <span></span>
                     BlackJack
                </a>
-               <a href="/tictac.html" class="btn">
+               <a href="/tictac.html" class="btn" onclick="linkCheck(this)">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -55,6 +55,7 @@
      </main>
      
 </body>
+
 <script defer src="/Static/js/app.js"></script>
 </html>
 
