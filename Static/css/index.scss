@@ -31,14 +31,58 @@ Media quereys/animations
      }
 }
 
+@keyframes fall {
+     0%, 100%{
+          left: -20%;
+          bottom: 100%;
+          transform: rotate(45deg); 
+     }
+
+     97%{
+          left: -10%;
+          bottom: -100%;
+          transform: rotate(360deg); 
+     }
+
+     98%{
+          left: -300%;
+          bottom: -100%;
+     }
+}
+
+@keyframes fall2 {
+     0%, 100%{
+          top: -100%;
+          right: -20%;
+          transform: rotate(-45deg); 
+     }
+
+     97%{
+          top: 200%;
+          right: -20%;
+          transform: rotate(360deg);
+     }
+
+     98%{
+          top: -100%;
+          right: -200%; 
+     }
+}
+
 @mixin mobileSide{
-     @media (min-width: 568px) and (max-width: 823px){
+     @media (min-width: 568px) and (max-width: 823px) and (max-height: 500px){
           @content;
      }
 }
 
 @mixin ipadSmall{
-     @media (max-width: 1024px) and (min-height: 768px){
+     @media (min-width: 768px) and (max-height: 1024px) and (min-height: 768px){
+          @content;
+     }
+}
+
+@mixin ipadThick{
+     @media (min-width: 1024px) and (max-height: 1366px) and (min-height: 1024px){
           @content;
      }
 }
@@ -95,7 +139,7 @@ Main Menu
 @for $i from 1 to 6 {
      .detail-#{$i}{
          position: fixed;
-         opacity: .07; 
+         opacity: .05; 
          z-index: -1;
          height: 40%;
           @include mobileSide{
@@ -105,7 +149,8 @@ Main Menu
           }
           
           @include ipadSmall{
-               height: 60%;
+               height: 50%;
+
           }
      }
 }
@@ -115,14 +160,15 @@ Main Menu
      &1{
           left: -10%;
           bottom: -10%;
-          transform: rotate(45deg);
-          
+          transform: rotate(45deg);    
+          animation: fall 20s linear infinite;
      }
 
      &2{
-          top: 20%;
+          top: 0%;
           right: -20%;
           transform: rotate(-45deg);
+          animation: fall2 25s linear infinite;
      }
 
      &3{
@@ -173,6 +219,9 @@ main{
           @include ipadSmall {
                font-size: 7em;
           }
+          @include ipadThick {
+               font-size: 10em;
+          }
      }
 
      article{
@@ -203,8 +252,16 @@ main{
                @include ipadSmall{
                     font-size: 2em;
                }
+
+               @include ipadThick{
+                    font-size: 3em;
+               }
+
+               &:hover:not(.selected){
+                    color: $color2;
+               }
                
-               &:hover, &:focus{
+               &:focus{
                     color: $color1;
                     background: $color3;
                     box-shadow: 0 0 10px $color3, 0 0 40px $color3, 0 0 80px $color3;
@@ -213,33 +270,34 @@ main{
                
 
                
-               &:hover span:nth-child(1), &:focus span:nth-child(1){
+               &:focus span:nth-child(1){
                     left: 100%;
                     transition: 1s;
                }
 
-               &:hover span:nth-child(2), &:focus span:nth-child(2){
+               &:focus span:nth-child(2){
                     top: 100%;
                     transition: 1s;
                     transition-delay: 0.25s;
                }
 
-               &:hover span:nth-child(3), &:focus span:nth-child(3){
+               &:focus span:nth-child(3){
                     right: 100%;
                     transition: 1s;
                     transition-delay: .5s;
                }
                
-               &:hover span:nth-child(4), &:focus span:nth-child(4){
+               &:focus span:nth-child(4){
                     bottom: 100%;
                     transition: 1s;
                     transition-delay: .75s;
                }
+
                span{
 
                     position: absolute;
                     display: block;
-                    
+
                     &:nth-child(1){
                          top: 0;
                          left: -100%;
@@ -272,6 +330,18 @@ main{
                          height: 100%;
                          width: 4px;
                          
+                    }
+
+                    &:nth-child(1), &:nth-child(3){
+                         @include ipadThick{
+                              height: 8px;
+                         }
+                    }
+
+                    &:nth-child(2), &:nth-child(4){
+                         @include ipadThick{
+                              width: 8px;
+                         }
                     }
                }
           }
