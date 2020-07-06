@@ -60,13 +60,64 @@ Media quereys/animations
      97%{
           top: 200%;
           right: -20%;
-          transform: rotate(360deg);
+          transform: rotate(-360deg);
      }
 
      98%{
           top: -100%;
           right: -200%; 
      }
+}
+
+@keyframes bounce{
+     0%, 100%{
+          transform: rotate(20deg);
+          right: 10%;
+          top: 70%;
+     }
+
+     20%{
+          transform: rotate(100deg);
+          right: 0%;
+     }
+
+     60%{
+          right: 80%;
+          transform: rotate(360deg);
+          top: 40%;
+     }
+}
+
+@keyframes bounce2{
+     0%, 100%{
+          top: 5%;
+          left: 30%;
+     }
+
+     20%{
+          top: 0%;
+          left: 50%;
+     }
+
+     60%{
+          left: 80%;
+          top: 40%;
+     }
+}
+
+@keyframes bounce3{
+     0%, 100%{
+          transform: rotate(-20deg);
+          left: 5%;
+     }
+
+     50%{
+          top: 80%;
+          left: 10%;
+          transform: rotate(-360deg);
+     }
+
+     
 }
 
 @mixin mobileSide{
@@ -122,6 +173,8 @@ Main Menu
      letter-spacing: 1.5px;
 }
 
+
+
 .btn{
      background: rgba($color1, .5);
      width: 100%;
@@ -139,36 +192,37 @@ Main Menu
 @for $i from 1 to 6 {
      .detail-#{$i}{
          position: fixed;
-         opacity: .05; 
+         opacity: .1; 
          z-index: -1;
          height: 40%;
           @include mobileSide{
                height: 70%;
-               margin-left: 2em;
-               margin-right: 2em;
+              
           }
           
           @include ipadSmall{
                height: 50%;
+              
 
           }
      }
 }
 
+
 .detail-{
 
      &1{
-          left: -10%;
+          left: -5%;
           bottom: -10%;
           transform: rotate(45deg);    
-          animation: fall 20s linear infinite;
+          animation: fall 30s linear infinite;
      }
 
      &2{
           top: 0%;
-          right: -20%;
+          right: -5%;
           transform: rotate(-45deg);
-          animation: fall2 25s linear infinite;
+          animation: fall2 40s linear infinite;
      }
 
      &3{
@@ -176,23 +230,67 @@ Main Menu
           transform: rotate(20deg);
           right: 10%;
           top: 70%;
+          height: max-content;
+          width: max-content;
+          animation: bounce 30s linear infinite;
+          @include mobileSide{
+               font-size: 5em;   
+          }
+          
+          @include ipadSmall{
+               font-size: 10em;
+          }
+
+          @include ipadThick{
+               font-size: 10em;
+          }
      }
 
      &4{
           font-size: 5em;
           top: 5%;
           left: 30%;
+          height: max-content;
+          width: max-content;
+          animation: bounce2 30s linear infinite;
+          @include mobileSide{
+               font-size: 5em;   
+          }
+          
+          @include ipadSmall{
+               font-size: 10em;
+          }
+
+          @include ipadThick{
+               font-size: 10em;
+          }
      }
 
      &5{
           font-size: 5em;
           transform: rotate(-20deg);
           left: 5%;
+          top: 50%;
+          height: max-content;
+          width: max-content;
+          animation: bounce3 30s linear infinite;
+          @include mobileSide{
+               font-size: 5em;   
+          }
+          
+          @include ipadSmall{
+               font-size: 10em;
+          }
+
+          @include ipadThick{
+               font-size: 10em;
+          }
      }
 }
 
 body{ 
-     height: 100vh;
+     min-height: 100vh;
+     max-height: max-content;
      background: $gradient;
      display: flex;
      justify-content: center;
@@ -213,8 +311,8 @@ main{
      h1{
           text-align: center;
           font-family: $ff-primary;
-          font-size: 3.5em;
-          margin-bottom: 1em;
+          font-size: 3.25em;
+          margin-bottom: .5em;
 
           @include ipadSmall {
                font-size: 7em;
@@ -236,7 +334,24 @@ main{
                grid-template-rows: 1fr 1fr;
           }
           
-          
+          header{
+               text-align: center;
+               font-family: $ff-primary;
+               font-weight: bolder;
+               font-size: 2.5em;
+
+               &.heading2{
+                    @include mobileSide{
+                         grid-column: 2/3;
+                         grid-row: 1/1; 
+                    }
+               }
+          }
+
+          button:nth-child(2){
+               grid-row: 3/3;
+               grid-column: 1;
+          }
      
           button, a{
                overflow: hidden;
@@ -248,6 +363,8 @@ main{
                padding: .5em;
                transition: .3s linear;
                text-transform: uppercase;
+
+               
                
                @include ipadSmall{
                     font-size: 2em;
@@ -347,8 +464,6 @@ main{
           }
      }
 }
-
-
 
 .selected{
      color: $color1;
