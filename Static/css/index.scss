@@ -81,23 +81,77 @@ Main Menu
      }
 }
 
-main{
+@for $i from 1 to 6 {
+     .detail-#{$i}{
+         position: fixed;
+         opacity: .1; 
+     }
+}
+
+.detail-{
+     &1{
+          left: -20%;
+          bottom: -20%;
+          transform: rotate(45deg);
+     }
+
+     &2{
+          top: 20%;
+          right: -30%;
+          transform: rotate(-45deg);
+     }
+
+     &3{
+          font-size: 5em;
+          transform: rotate(20deg);
+          right: 10%;
+          top: 70%;
+     }
+
+     &4{
+          font-size: 5em;
+          top: 5%;
+          left: 30%;
+     }
+
+     &5{
+          font-size: 5em;
+          transform: rotate(-20deg);
+          left: 5%;
+     }
+}
+
+body{ 
      height: 100vh;
+     background: $gradient;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+main{
+     overflow: hidden;
      display: flex;
      justify-content: center;
      align-items: center;
      flex-direction: column;
-     background: $gradient;
+     height: 100%;
+     width: 100%;
+     padding: 1em;
+     
 
      h1{
+          text-align: center;
           font-family: $ff-primary;
           font-weight: bolder;
+          font-size: 3.5em;
+          margin-bottom: 1em;
      }
 
      article{
           display: grid;
-          grid-template-columns: 1fr 1fr;
-          grid-template-rows: 1fr 1fr;
+          grid-template-columns: 1fr;
+          grid-template-rows: 1fr 1fr 1fr 1fr;
           grid-gap: 1em;
           align-items: center;
           
@@ -108,11 +162,12 @@ main{
                font-family: $ff-secondary;
                justify-self: center;
                color: $color3;
+               font-size: 1.25em;
                padding: .5em;
                transition: .3s linear;
                text-transform: uppercase;
                
-
+               
                &:hover, &:focus{
                     color: $color1;
                     background: $color3;
@@ -120,36 +175,40 @@ main{
                     transition-delay: 1s;
                }
                
+
                
-               &:hover span:nth-child(1){
+               &:hover span:nth-child(1), &:focus span:nth-child(1){
                     left: 100%;
                     transition: 1s;
                }
 
-               &:hover span:nth-child(2){
+               &:hover span:nth-child(2), &:focus span:nth-child(2){
                     top: 100%;
                     transition: 1s;
                     transition-delay: 0.25s;
                }
 
-               &:hover span:nth-child(3){
+               &:hover span:nth-child(3), &:focus span:nth-child(3){
                     right: 100%;
                     transition: 1s;
                     transition-delay: .5s;
                }
                
-               &:hover span:nth-child(4){
+               &:hover span:nth-child(4), &:focus span:nth-child(4){
                     bottom: 100%;
                     transition: 1s;
                     transition-delay: .75s;
                }
                span{
 
+                    position: absolute;
+                    display: block;
+                    
                     &:nth-child(1){
                          top: 0;
                          left: -100%;
                          background: linear-gradient(90deg,transparent,$color3);
-                         height: 2px;
+                         height: 4px;
                          width: 100%;
                     }
                     &:nth-child(2){
@@ -157,7 +216,7 @@ main{
                          right: 0%;
                          background: linear-gradient(180deg,transparent,$color3);
                          height: 100%;
-                         width: 2px;
+                         width: 4px;
                          
                     }
                     
@@ -165,7 +224,7 @@ main{
                          bottom: 0;
                          right: -100%;
                          background: linear-gradient(270deg,transparent,$color3);
-                         height: 2px;
+                         height: 4px;
                          width: 100%;
                          
                     }
@@ -175,7 +234,7 @@ main{
                          left: 0%;
                          background: linear-gradient(90deg,transparent,$color3);
                          height: 100%;
-                         width: 2px;
+                         width: 4px;
                          
                     }
                }
@@ -183,12 +242,7 @@ main{
      }
 }
 
-@for $i from 1 through 4 {
-     a span:nth-child(#{$i}), button span:nth-child(#{$i}){
-          position: absolute;
-          display: block;
-     }     
-}
+
 
 .selected{
      color: $color1;

@@ -78,8 +78,82 @@ Main Menu
   outline: none;
 }
 
-main {
+.detail-1 {
+  position: fixed;
+  opacity: .1;
+}
+
+.detail-2 {
+  position: fixed;
+  opacity: .1;
+}
+
+.detail-3 {
+  position: fixed;
+  opacity: .1;
+}
+
+.detail-4 {
+  position: fixed;
+  opacity: .1;
+}
+
+.detail-5 {
+  position: fixed;
+  opacity: .1;
+}
+
+.detail-1 {
+  left: -20%;
+  bottom: -20%;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.detail-2 {
+  top: 20%;
+  right: -30%;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.detail-3 {
+  font-size: 5em;
+  -webkit-transform: rotate(20deg);
+          transform: rotate(20deg);
+  right: 10%;
+  top: 70%;
+}
+
+.detail-4 {
+  font-size: 5em;
+  top: 5%;
+  left: 30%;
+}
+
+.detail-5 {
+  font-size: 5em;
+  -webkit-transform: rotate(-20deg);
+          transform: rotate(-20deg);
+  left: 5%;
+}
+
+body {
   height: 100vh;
+  background: linear-gradient(45deg, #03001E, #7303C0, #EC38BC);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main {
+  overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -93,21 +167,26 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background: linear-gradient(45deg, #03001E, #7303C0, #EC38BC);
+  height: 100%;
+  width: 100%;
+  padding: 1em;
 }
 
 main h1 {
+  text-align: center;
   font-family: "Sacramento", cursive;
   font-weight: bolder;
+  font-size: 3.5em;
+  margin-bottom: 1em;
 }
 
 main article {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
-  -ms-grid-rows: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-gap: 1em;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -121,6 +200,7 @@ main article button, main article a {
   -ms-grid-column-align: center;
       justify-self: center;
   color: #EC38BC;
+  font-size: 1.25em;
   padding: .5em;
   -webkit-transition: .3s linear;
   transition: .3s linear;
@@ -136,13 +216,13 @@ main article button:hover, main article button:focus, main article a:hover, main
           transition-delay: 1s;
 }
 
-main article button:hover span:nth-child(1), main article a:hover span:nth-child(1) {
+main article button:hover span:nth-child(1), main article button:focus span:nth-child(1), main article a:hover span:nth-child(1), main article a:focus span:nth-child(1) {
   left: 100%;
   -webkit-transition: 1s;
   transition: 1s;
 }
 
-main article button:hover span:nth-child(2), main article a:hover span:nth-child(2) {
+main article button:hover span:nth-child(2), main article button:focus span:nth-child(2), main article a:hover span:nth-child(2), main article a:focus span:nth-child(2) {
   top: 100%;
   -webkit-transition: 1s;
   transition: 1s;
@@ -150,7 +230,7 @@ main article button:hover span:nth-child(2), main article a:hover span:nth-child
           transition-delay: 0.25s;
 }
 
-main article button:hover span:nth-child(3), main article a:hover span:nth-child(3) {
+main article button:hover span:nth-child(3), main article button:focus span:nth-child(3), main article a:hover span:nth-child(3), main article a:focus span:nth-child(3) {
   right: 100%;
   -webkit-transition: 1s;
   transition: 1s;
@@ -158,7 +238,7 @@ main article button:hover span:nth-child(3), main article a:hover span:nth-child
           transition-delay: .5s;
 }
 
-main article button:hover span:nth-child(4), main article a:hover span:nth-child(4) {
+main article button:hover span:nth-child(4), main article button:focus span:nth-child(4), main article a:hover span:nth-child(4), main article a:focus span:nth-child(4) {
   bottom: 100%;
   -webkit-transition: 1s;
   transition: 1s;
@@ -166,12 +246,17 @@ main article button:hover span:nth-child(4), main article a:hover span:nth-child
           transition-delay: .75s;
 }
 
+main article button span, main article a span {
+  position: absolute;
+  display: block;
+}
+
 main article button span:nth-child(1), main article a span:nth-child(1) {
   top: 0;
   left: -100%;
   background: -webkit-gradient(linear, left top, right top, from(transparent), to(#EC38BC));
   background: linear-gradient(90deg, transparent, #EC38BC);
-  height: 2px;
+  height: 4px;
   width: 100%;
 }
 
@@ -181,7 +266,7 @@ main article button span:nth-child(2), main article a span:nth-child(2) {
   background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#EC38BC));
   background: linear-gradient(180deg, transparent, #EC38BC);
   height: 100%;
-  width: 2px;
+  width: 4px;
 }
 
 main article button span:nth-child(3), main article a span:nth-child(3) {
@@ -189,7 +274,7 @@ main article button span:nth-child(3), main article a span:nth-child(3) {
   right: -100%;
   background: -webkit-gradient(linear, right top, left top, from(transparent), to(#EC38BC));
   background: linear-gradient(270deg, transparent, #EC38BC);
-  height: 2px;
+  height: 4px;
   width: 100%;
 }
 
@@ -199,27 +284,7 @@ main article button span:nth-child(4), main article a span:nth-child(4) {
   background: -webkit-gradient(linear, left top, right top, from(transparent), to(#EC38BC));
   background: linear-gradient(90deg, transparent, #EC38BC);
   height: 100%;
-  width: 2px;
-}
-
-a span:nth-child(1), button span:nth-child(1) {
-  position: absolute;
-  display: block;
-}
-
-a span:nth-child(2), button span:nth-child(2) {
-  position: absolute;
-  display: block;
-}
-
-a span:nth-child(3), button span:nth-child(3) {
-  position: absolute;
-  display: block;
-}
-
-a span:nth-child(4), button span:nth-child(4) {
-  position: absolute;
-  display: block;
+  width: 4px;
 }
 
 .selected {
