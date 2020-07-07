@@ -441,10 +441,9 @@ Main Menu
 }
 
 body {
-  min-height: 100vh;
-  max-height: -webkit-max-content;
-  max-height: -moz-max-content;
-  max-height: max-content;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
   background: linear-gradient(45deg, #03001E, #7303C0, #EC38BC);
   display: -webkit-box;
   display: -ms-flexbox;
