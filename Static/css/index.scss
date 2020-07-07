@@ -267,7 +267,7 @@ Main Menu
 }
 
 body{ 
-     height: max-content;
+     min-height: 100vh;
      background: $gradient;
      display: flex;
      justify-content: center;
@@ -301,7 +301,7 @@ main{
           display: grid;
           grid-template-columns: 1fr;
           grid-template-rows: 1fr 1fr 1fr 1fr;
-          grid-gap: 1em;
+          grid-gap: 15px;
           align-items: center;
 
           @include mobileSide {
@@ -331,6 +331,7 @@ main{
           button, a{
                overflow: hidden;
                position: relative;
+               text-align: center;
                font-family: $ff-secondary;
                justify-self: center;
                color: $color3;

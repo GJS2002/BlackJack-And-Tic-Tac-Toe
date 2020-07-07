@@ -441,9 +441,7 @@ Main Menu
 }
 
 body {
-  height: -webkit-max-content;
-  height: -moz-max-content;
-  height: max-content;
+  min-height: 100vh;
   background: linear-gradient(45deg, #03001E, #7303C0, #EC38BC);
   display: -webkit-box;
   display: -ms-flexbox;
@@ -503,7 +501,7 @@ main article {
       grid-template-columns: 1fr;
   -ms-grid-rows: 1fr 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr 1fr 1fr;
-  grid-gap: 1em;
+  grid-gap: 15px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -545,6 +543,7 @@ main article button:nth-child(2) {
 main article button, main article a {
   overflow: hidden;
   position: relative;
+  text-align: center;
   font-family: "Oswald", sans-serif;
   -ms-grid-column-align: center;
       justify-self: center;
