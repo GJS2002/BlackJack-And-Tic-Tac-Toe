@@ -536,13 +536,12 @@ main article .Mode, main article .Game {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  width: 100%;
 }
 
 main article .Mode button, main article .Mode a, main article .Game button, main article .Game a {
   margin-bottom: 1em;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
+  width: 100%;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
@@ -592,7 +591,7 @@ main article button:hover:not(.selected), main article a:hover:not(.selected) {
   color: #7303C0;
 }
 
-main article button:focus, main article a:focus {
+main article button.selected, main article a.selected {
   color: #03001E;
   background: #EC38BC;
   -webkit-box-shadow: 0 0 10px #EC38BC, 0 0 40px #EC38BC, 0 0 80px #EC38BC;
@@ -601,13 +600,13 @@ main article button:focus, main article a:focus {
           transition-delay: 1s;
 }
 
-main article button:focus span:nth-child(1), main article a:focus span:nth-child(1) {
+main article button.selected span:nth-child(1), main article a.selected span:nth-child(1) {
   left: 100%;
   -webkit-transition: 1s;
   transition: 1s;
 }
 
-main article button:focus span:nth-child(2), main article a:focus span:nth-child(2) {
+main article button.selected span:nth-child(2), main article a.selected span:nth-child(2) {
   top: 100%;
   -webkit-transition: 1s;
   transition: 1s;
@@ -615,7 +614,7 @@ main article button:focus span:nth-child(2), main article a:focus span:nth-child
           transition-delay: 0.25s;
 }
 
-main article button:focus span:nth-child(3), main article a:focus span:nth-child(3) {
+main article button.selected span:nth-child(3), main article a.selected span:nth-child(3) {
   right: 100%;
   -webkit-transition: 1s;
   transition: 1s;
@@ -623,7 +622,7 @@ main article button:focus span:nth-child(3), main article a:focus span:nth-child
           transition-delay: .5s;
 }
 
-main article button:focus span:nth-child(4), main article a:focus span:nth-child(4) {
+main article button.selected span:nth-child(4), main article a.selected span:nth-child(4) {
   bottom: 100%;
   -webkit-transition: 1s;
   transition: 1s;
@@ -682,12 +681,5 @@ main article button span:nth-child(4), main article a span:nth-child(4) {
   main article button span:nth-child(2), main article button span:nth-child(4), main article a span:nth-child(2), main article a span:nth-child(4) {
     width: 8px;
   }
-}
-
-.selected {
-  color: #03001E;
-  background: #EC38BC;
-  -webkit-box-shadow: 0 0 10px #EC38BC, 0 0 40px #EC38BC, 0 0 80px #EC38BC;
-          box-shadow: 0 0 10px #EC38BC, 0 0 40px #EC38BC, 0 0 80px #EC38BC;
 }
 /*# sourceMappingURL=index.css.map */

@@ -320,10 +320,11 @@ main{
                padding: 1em;
                display: flex;
                flex-direction: column;
+               width: 100%;
                
                button, a{
                     margin-bottom: 1em;
-                    width: max-content;
+                    width: 100%;
                     align-self: center;
                     justify-self: center;
                }
@@ -344,7 +345,7 @@ main{
                font-family: $ff-secondary;
                justify-self: center;
                color: $color3;
-               font-size: 1.25em;
+               font-size: 1.25em;   
                padding: .5em;
                transition: .3s linear;
                text-transform: uppercase;
@@ -363,7 +364,7 @@ main{
                     color: $color2;
                }
                
-               &:focus{
+               &.selected{
                     color: $color1;
                     background: $color3;
                     box-shadow: 0 0 10px $color3, 0 0 40px $color3, 0 0 80px $color3;
@@ -372,24 +373,24 @@ main{
                
 
                
-               &:focus span:nth-child(1){
+               &.selected span:nth-child(1){
                     left: 100%;
                     transition: 1s;
                }
 
-               &:focus span:nth-child(2){
+               &.selected span:nth-child(2){
                     top: 100%;
                     transition: 1s;
                     transition-delay: 0.25s;
                }
 
-               &:focus span:nth-child(3){
+               &.selected span:nth-child(3){
                     right: 100%;
                     transition: 1s;
                     transition-delay: .5s;
                }
                
-               &:focus span:nth-child(4){
+               &.selected span:nth-child(4){
                     bottom: 100%;
                     transition: 1s;
                     transition-delay: .75s;
@@ -450,8 +451,3 @@ main{
      }
 }
 
-.selected{
-     color: $color1;
-     background: $color3;
-     box-shadow: 0 0 10px $color3, 0 0 40px $color3, 0 0 80px $color3;
-}
