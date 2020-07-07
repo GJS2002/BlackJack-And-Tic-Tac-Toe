@@ -1,9 +1,41 @@
+*{
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+}
+
 body{
      height: 100vh;
 }
 
 
+.box1{
+     border-bottom: 3px solid black ;
+}
+
 section{
-     height: 100vh;
+     height: max-content;
+     width: 100%;
      background: center / cover no-repeat url("./images/table.jpg");
+     display: flex;
+     flex-direction: column;
+     div{
+          h1{
+               color: white;
+               text-align: center;
+               width: 100%;
+               margin: 1em 0 1em 0;
+          }
+          display: flex;
+          height: max-content;
+          justify-content: center;
+          flex-wrap: wrap;
+          width: 100%;
+
+          img{
+               margin: 1em;
+               height: 5em;
+               width: 4em;
+          }
+     }
 }
