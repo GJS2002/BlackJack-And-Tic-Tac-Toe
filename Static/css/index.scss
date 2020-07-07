@@ -298,15 +298,15 @@ main{
      }
 
      article{
-          display: grid;
-          grid-template-columns: 1fr;
-          grid-template-rows: 1fr 1fr 1fr 1fr;
-          grid-gap: 15px;
+          display: flex;
+          flex-direction: column;
           align-items: center;
+          padding: 1em;
 
           @include mobileSide {
-               grid-template-columns: 1fr 1fr;
-               grid-template-rows: 1fr 1fr;
+               width: 100%;
+               justify-content: space-around;
+               flex-direction: row;
           }
           
           header{
@@ -314,19 +314,28 @@ main{
                font-family: $ff-primary;
                font-weight: bolder;
                font-size: 2.5em;
+          }
 
-               &.heading2{
-                    @include mobileSide{
-                         grid-column: 2/3;
-                         grid-row: 1/1; 
-                    }
+          .Mode, .Game{
+               padding: 1em;
+               display: flex;
+               flex-direction: column;
+               
+               button, a{
+                    margin-bottom: 1em;
+                    width: max-content;
+                    align-self: center;
+                    justify-self: center;
                }
           }
 
-          button:nth-child(2){
-               grid-row: 3/3;
-               grid-column: 1;
+          .Game{
+               padding: 1em;
+               display: flex;
+               flex-direction: column;
           }
+
+         
      
           button, a{
                overflow: hidden;
