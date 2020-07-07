@@ -281,7 +281,7 @@ main{
      justify-content: center;
      align-items: center;
      flex-direction: column;
-     height: 100vh;
+     height: minmax(100vh, max-content);
      width: 100vw;
 
      h1{

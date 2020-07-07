@@ -472,7 +472,9 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 100vh;
+  height: minmax(100vh, -webkit-max-content);
+  height: minmax(100vh, -moz-max-content);
+  height: minmax(100vh, max-content);
   width: 100vw;
 }
 
