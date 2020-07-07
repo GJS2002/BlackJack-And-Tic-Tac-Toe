@@ -202,31 +202,6 @@ Media quereys/animations
 
 /*
 =============== 
-Page transitions
-===============
-*/
-.transition-fade {
-  opacity: 1;
-  -webkit-transition: 1s;
-  transition: 1s;
-  -webkit-transform: translateY(0);
-          transform: translateY(0);
-}
-
-html.is-animating .transition-fade {
-  opacity: 1;
-  -webkit-transform: translateY(100%);
-          transform: translateY(100%);
-}
-
-html.is-leaving .transition-fade {
-  opacity: 0;
-  -webkit-transform: translateY(0);
-          transform: translateY(0);
-}
-
-/*
-=============== 
 Main Menu
 ===============
 */
