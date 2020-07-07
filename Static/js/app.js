@@ -1,4 +1,3 @@
-const swup = new Swup();
 let btns;
 
 //Sets the selected gamemode to the mode item in local storage so other pages can determine if a bot is included or not
