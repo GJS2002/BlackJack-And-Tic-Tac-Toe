@@ -569,6 +569,7 @@ main article button, main article a {
       justify-self: center;
   color: #EC38BC;
   font-size: 1.25em;
+  width: 100%;
   padding: .5em;
   -webkit-transition: .3s linear;
   transition: .3s linear;
