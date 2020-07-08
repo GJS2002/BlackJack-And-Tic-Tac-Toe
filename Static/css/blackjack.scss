@@ -11,13 +11,8 @@ $color1: #03001E;
 $color2: #7303C0;
 $color3: #EC38BC;
 $color4: #280341;
-
-
 $ff-primary: 'Sacramento', cursive;
 $ff-secondary: 'Oswald', sans-serif;
-
-
-
 /*
 =============== 
 Media quereys/animations
@@ -284,9 +279,19 @@ Main css
      position: relative;
      background: rgba($color1, .7);
      overflow: hidden;
-     transition: .3s linear;
-     width: 60%;
+     transition: .5s linear;
+     width: 50%;
+     font-family: $ff-secondary;
      margin-bottom: 1em;
+
+     @include ipadSmall{
+          font-size: 3em;
+     }
+     
+     @include ipadThick{
+          font-size: 3em;
+     }
+
      &::before{
           content: '';
           position: absolute;
@@ -351,6 +356,16 @@ main{
      background: black;
      color: white;
      opacity: 0;
+
+     @include ipadSmall{
+          font-size: 3em;
+     }
+     
+     @include ipadThick{
+          font-size: 3em;
+     }
+
+     
      
      h1{
           font-family: $ff-primary;
@@ -373,6 +388,15 @@ nav{
      justify-content: center;
      align-items: center;
      font-size: 1.25em;
+
+     @include ipadSmall{
+          font-size: 2.5em;
+     }
+     
+     @include ipadThick{
+          font-size: 2.5em;
+     }
+
 
      th{
           padding: 0 .5em 0 .5em;
@@ -407,6 +431,15 @@ section{
                margin: 1em 0 1em 0;
                letter-spacing: 10px;
                font-size: 1.5em;
+
+               @include ipadSmall{
+                    font-size: 3em;
+               }
+               
+               @include ipadThick{
+                    font-size: 3em;
+               }
+          
           }
           display: flex;
           height: max-content;
@@ -418,6 +451,21 @@ section{
                margin: 1em;
                height: 5em;
                width: 4em;
+               
+               @include ipadSmall{
+                    
+                    margin: 2em;
+                    height: 7em;
+                    width: 6em;
+               }
+               
+               @include ipadThick{
+                    margin: 2em;
+                    height: 7em;
+                    width: 6em;
+                    
+               }
+          
           }
      }
 }
