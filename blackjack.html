@@ -4,6 +4,7 @@
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="./Static/css/blackjack.css">
+     <script defer src="https://kit.fontawesome.com/b9865150d6.js" crossorigin="anonymous"></script>
      <script defer src="./Static/js/blackjack.js"></script>
      <title>Main Menu</title>
 </head>
@@ -29,29 +30,37 @@
                </table>
           </nav>
 
-          <nav class="buttons">
-
-          </nav>
-
-          <h1>BlackJack</h1>
+          
+               
           <section>
                <div class="box1">
-                    <h1>Player 1: <span>17</span></h1>
+                    <h1>Player 1: <span class="player1Score">0</span></h1>
                     <img src="./Static/css/images/A.png" alt="">
                     <img src="./Static/css/images/10.png" alt="">
                     <img src="./Static/css/images/6.png" alt="">
                </div>
                <div class="box2">
-                    <h1>Player 2: <span>Score</span></h1>
+                    <h1>Player 2: <span class="player2Score">0</span></h1>
                     
                     <img src="./Static/css/images/A.png" alt="">
                     <img src="./Static/css/images/10.png" alt="">
                     <img src="./Static/css/images/6.png" alt="">
                </div>
           </section>
-          <ul>
-               <li><a href="./index.html"><h1>Back To Main Menu</h1></a></li>
-          </ul>
+
+          <menu>
+               <button class="btn btn-hit">Hit</button>
+               <button class="btn btn-stand">Stand</button>
+               <button class="btn btn-deal">Deal</button>
+               <a href="./index.html" class="btn btn-Menu">Menu</a>
+          </menu>
+          
      </main>
+
+     <img src="./Static/css/images/A.png" alt="" class="detail-1">
+     <img src="./Static/css/images/10.png" alt="" class="detail-2">
+     <span class="detail-3"><i class="fas fa-times"></i></span>
+     <span class="detail-4"><i class="far fa-circle"></i></span>
+     <span class="detail-5"><i class="fas fa-times"></i></span>
 </body>
 </html>

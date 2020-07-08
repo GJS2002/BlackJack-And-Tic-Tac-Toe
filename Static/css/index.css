@@ -9,23 +9,6 @@ Variables
 Media quereys/animations
 ===============
 */
-@-webkit-keyframes animate {
-  0%, 100% {
-    background-position: 0 0;
-  }
-  50% {
-    background-position: 300% 0;
-  }
-}
-@keyframes animate {
-  0%, 100% {
-    background-position: 0 0;
-  }
-  50% {
-    background-position: 300% 0;
-  }
-}
-
 @-webkit-keyframes fall {
   0%, 100% {
     left: -20%;
@@ -44,7 +27,6 @@ Media quereys/animations
     bottom: -100%;
   }
 }
-
 @keyframes fall {
   0%, 100% {
     left: -20%;
