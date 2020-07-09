@@ -32,7 +32,7 @@ Html elements
 const box1 = document.querySelector(".box1");
 const box2 = document.querySelector(".box2");
 const hitBtn = document.querySelector(".btn-hit");
-
+const turnText = document.querySelector(".turn");
 /*
 =============== 
 Values 
@@ -59,6 +59,7 @@ const hit = () => {
      }
      
      updateScore(theCard);
+     console.log(p2Score);
      
 };
 
@@ -66,29 +67,14 @@ let updateScore = card => {
     let value = cardValues[card];
     const p1Text = document.querySelector(".p1Score");
     const p2Text = document.querySelector(".p2Score");
+
      if(!p2Turn){
-          if(p1Score > 10 && card === 'A'){
-               p1Score += low;
-               p1Text.textContent = p1Score;
-          } else if (p1Score < 10 && card === 'A'){
-               p1Score += high;
-               p1Text.textContent = p1Score;
-          } else {
-               p1Score += value;
-               p1Text.textContent = p1Score;
-          }
+          //Updates player1's score based on the card, if its an ace it decides between a value of 1 and 11 based on the current score
+          p1Score = checkScore(p1Score, p1Text, value, card);
                 
      } else {
-          if(p2Score > 10 && card === 'A'){
-               p1Score += low;
-               p1Text.textContent = p1Score;
-          } else if (p2Score < 10 && card === 'A'){
-               p2Score += high;
-               p2Text.textContent = p1Score;
-          } else {
-               p2Score += value;
-               p2Text.textContent = p1Score;
-          }
+          //Updates player2's score based on the card, if its an ace it decides between a value of 1 and 11 based on the current score
+          p2Score = checkScore(p2Score, p2Text, value, card);
      }
 };
 
@@ -100,7 +86,38 @@ let randCard = () => {
      return card;    
 };
 
+let checkTurnText = () => {
+     if(!p2Turn){
+          turnText.textContent = `Its Player 1's turn!`;
+     } else {
+          turnText.textContent = `Its Player 2's turn!`;
+     }
+}
 
+let checkScore = (pScore, pText, value, card) => {
+     if(pScore > 10 && card === 'A'){
+          pScore += low;
+          pText.textContent = pScore;
+          console.log(pScore);
+          
+     } else if (pScore < 10 && card === 'A'){
+          pScore += high;
+          pText.textContent = pScore;
+     } else {
+          pScore += value;
+          pText.textContent = pScore;
+     }
+     if(pScore > 21){
+          pText.textContent = 'Bust';
+          pText.style.color = 'red';
+     }
+
+     return pScore;
+}
+
+let checkMode = () => {
+
+}
 
 /*
 =============== 
@@ -109,3 +126,4 @@ Events
 */
 
 hitBtn.addEventListener('click', hit);
+checkTurnText();

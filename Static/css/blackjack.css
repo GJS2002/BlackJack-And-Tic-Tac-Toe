@@ -597,18 +597,23 @@ main h1 {
           animation: slide 1s linear;
 }
 
-nav {
+header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   top: 0;
-  padding: 1em;
-  background: rgba(40, 3, 65, 0.87);
+  padding: 1em 1em 0 1em;
+  background: #03001E;
   width: 100%;
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
   color: #EC38BC;
   font-family: "Oswald", sans-serif;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -620,24 +625,37 @@ nav {
 }
 
 @media (min-width: 768px) and (max-height: 1024px) and (min-height: 768px) {
-  nav {
-    font-size: 2.5em;
+  header {
+    font-size: 2em;
   }
 }
 
 @media (min-width: 1024px) and (max-height: 1366px) and (min-height: 1024px) {
-  nav {
-    font-size: 2.5em;
+  header {
+    font-size: 2em;
   }
 }
 
-nav th {
+header table {
+  border: 3px solid #EC38BC;
+}
+
+header th {
   padding: 0 .5em 0 .5em;
 }
 
-nav th h1 {
+header th h1 {
+  font-size: 1.25em;
   text-decoration: underline;
   font-family: "Oswald", sans-serif;
+}
+
+header p {
+  font-weight: bold;
+  font-size: 1.5em;
+  -webkit-transition: .3s linear;
+  transition: .3s linear;
+  margin: 1em 0 1em 0;
 }
 
 .box1, .box2 {

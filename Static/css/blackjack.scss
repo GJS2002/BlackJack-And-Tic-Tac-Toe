@@ -376,10 +376,12 @@ main{
      animation: fade 3s linear;
 }
 
-nav{
+header{
+     display: flex;
+     flex-direction: column;
      top: 0;
-     padding: 1em;
-     background: rgba($color4, .87);
+     padding: 1em 1em 0 1em;
+     background: $color1;
      width: 100%;
      height: max-content;
      color: $color3;
@@ -390,20 +392,31 @@ nav{
      font-size: 1.25em;
 
      @include ipadSmall{
-          font-size: 2.5em;
+          font-size: 2em;
      }
      
      @include ipadThick{
-          font-size: 2.5em;
+          font-size: 2em;
      }
-
+     
+     table{
+          border: 3px solid $color3;
+     }
 
      th{
           padding: 0 .5em 0 .5em;
           h1{
+               font-size: 1.25em;
                text-decoration: underline;
                font-family: $ff-secondary;
           }
+     }
+
+     p{
+          font-weight: bold;
+          font-size: 1.5em;
+          transition: .3s linear;
+          margin: 1em 0 1em 0;
      }
 
      
@@ -469,3 +482,4 @@ section{
           }
      }
 }
+
