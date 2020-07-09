@@ -280,9 +280,9 @@ Main css
      background: rgba($color1, .7);
      overflow: hidden;
      transition: .5s linear;
-     width: 50%;
+     min-width: 5em;
      font-family: $ff-secondary;
-     margin-bottom: 1em;
+     margin: .5em;
 
      @include ipadSmall{
           font-size: 3em;
@@ -323,7 +323,7 @@ menu{
      display: flex;
      justify-content: center;
      align-items: center;
-     flex-direction: column;
+     flex-wrap: wrap;
 }
 
 body{
@@ -371,6 +371,7 @@ main{
           font-family: $ff-primary;
           letter-spacing: 10px;
           animation: slide 1s linear;
+          
      }
 
      animation: fade 3s linear;
@@ -378,7 +379,7 @@ main{
 
 header{
      display: flex;
-     flex-direction: column;
+     flex-wrap: wrap;
      top: 0;
      padding: 1em 1em 0 1em;
      background: $color1;
@@ -416,7 +417,7 @@ header{
           font-weight: bold;
           font-size: 1.5em;
           transition: .3s linear;
-          margin: 1em 0 1em 0;
+          margin: 1em;
      }
 
      

@@ -32,15 +32,13 @@ Html elements
 const box1 = document.querySelector(".box1");
 const box2 = document.querySelector(".box2");
 const header = document.querySelector("header");
-const alertText = document.querySelector(".alert");
+
 
 const hitBtn = document.querySelector(".btn-hit");
 const standBtn = document.querySelector(".btn-stand");
 const dealBtn = document.querySelector(".btn-deal");
 
-const p1WinsText = document.querySelector(".p1Wins");
-const p2WinsText = document.querySelector(".p2Wins");
-const drawsText = document.querySelector(".Draws");
+
 /*
 =============== 
 Values 
@@ -66,21 +64,23 @@ Functions
 */
 
 const hit = () => {
-     let theCard = randCard();
-     if(p1Turn){
-          box1.innerHTML += `<img src="./Static/css/images/${theCard}.png" alt="">`;
-     } else {
-          box2.innerHTML += `<img src="./Static/css/images/${theCard}.png" alt="">`;
+     if(!gameOver){
+          let theCard = randCard();
+          if(p1Turn){
+               box1.innerHTML += `<img src="./Static/css/images/${theCard}.png" alt="" id="card"> `;
+          } else {
+               box2.innerHTML += `<img src="./Static/css/images/${theCard}.png" alt="" id="card"> `;
+          }
+          
+          updateScore(theCard);
      }
-     
-     updateScore(theCard);
      
 };
 
 let updateScore = card => {
     let value = cardValues[card];
-    const p1Text = document.querySelector(".p1Score");
-    const p2Text = document.querySelector(".p2Score");
+    let p1Text = document.querySelector(".p1Score");
+    let p2Text = document.querySelector(".p2Score");
 
      if(p1Turn){
           //Sets p1Score variable = to score returned from checkscore and also checks to see if p1Score is > 21
@@ -110,12 +110,18 @@ let randCard = () => {
 };
 
 let checkTurnText = () => {
+     let alertText = document.querySelector(".alert");
+     const box1Title = document.querySelector(".box1-title");
+     const box2Title = document.querySelector(".box2-title");
      //Updates text to show who's turn it is
-     if(!p2Turn){
-          alertText.textContent = `Its Player 1's turn!`;
-     } else {
-          alertText.textContent = `Its Player 2's turn!`;
-     }
+     p1Turn ? (alertText.textContent = `Its Player 1's turn!`, box1Title.style = 'text-decoration: underline;', 
+     box2Title.style = 'text-decoration: none;') : 
+     (alertText.textContent = `Its Player 2's turn!`, 
+     box2Title.style = 'text-decoration: underline;', 
+     box1Title.style = 'text-decoration: none;');
+
+
+
 }
 
 let checkScore = (pScore, pText, value, card) => {
@@ -135,18 +141,47 @@ let checkScore = (pScore, pText, value, card) => {
 }
 
 let stand = () => {
-     p1Turn ? (p2Turn = true, p1Turn = false, checkTurnText()) : checkWinner();
+     if(!gameOver){
+          p1Turn ? (p2Turn = true, p1Turn = false, checkTurnText()) : checkWinner();
+     }
 }
 
 let deal = () => {
-
+    let p1Text = document.querySelector(".p1Score");
+    let p2Text = document.querySelector(".p2Score");
+     if(gameOver){
+          gameOver = false;
+          p1Turn = true;
+          p2Turn = false;
+          p1Bust = false;
+          p2Bust = false;
+          p1Score = 0;
+          p2Score = 0;
+          p2Text.textContent = p2Score;
+          p1Text.textContent = p1Score;
+          let gameOverAlert = document.querySelector(".alert-game-over");
+          gameOverAlert.remove();
+          clearBoard();
+          checkTurnText();
+          hit();
+     }
 }
 
 let checkMode = () => {
 
 }
 
+let clearBoard = () => {
+     document.querySelectorAll("#card").forEach(card => {
+          card.remove();
+     });
+}
+
 let checkWinner = () => {
+     let p1WinsText = document.querySelector(".p1Wins");
+     let p2WinsText = document.querySelector(".p2Wins");
+     let drawsText = document.querySelector(".Draws");
+     let alertText = document.querySelector(".alert");
      (p1Bust && p2Bust || p1Score === p2Score) ? 
      (alertText.textContent = 'Draw', draws += 1, drawsText.textContent = draws) :
      (p1Bust || p2Score > p1Score) ? 
@@ -155,7 +190,7 @@ let checkWinner = () => {
      (alertText.textContent = 'Player 1 has won!', p1Wins += 1, p1WinsText.textContent = p1Wins) : 
      alertText.textContent = 'Something went horribly wrong!';
 
-     header.innerHTML += '<p>GAME OVER, CLICK DEAL TO PLAY AGAIN</p>';
+     header.innerHTML += '<p class="alert-game-over">GAME OVER, CLICK DEAL TO PLAY AGAIN</p>';
      gameOver = true;
 }    
 
@@ -168,5 +203,5 @@ Events
 hitBtn.addEventListener('click', hit);
 standBtn.addEventListener('click', stand);
 dealBtn.addEventListener('click', deal);
-
+checkTurnText();
 
