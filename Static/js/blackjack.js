@@ -57,6 +57,8 @@ let p1Bust = false;
 let p2Bust = false;
 let gameOver = false;
 
+let gameMode;
+
 /*
 =============== 
 Functions
@@ -64,16 +66,17 @@ Functions
 */
 
 const hit = () => {
+     let theCard = randCard();
      if(!gameOver){
-          let theCard = randCard();
           if(p1Turn){
                box1.innerHTML += `<img src="./Static/css/images/${theCard}.png" alt="" id="card"> `;
           } else {
-               box2.innerHTML += `<img src="./Static/css/images/${theCard}.png" alt="" id="card"> `;
+               box2.innerHTML += `<img src="./Static/css/images/${theCard}.png" alt="" id="card"> `;     
           }
-          
-          updateScore(theCard);
      }
+          
+     updateScore(theCard);
+     
      
 };
 
@@ -87,7 +90,9 @@ let updateScore = card => {
           p1Score = checkScore(p1Score, p1Text, value, card);
 
           (p1Score > 21) ? 
-          (p1Turn = false, p2Turn = true, checkTurnText(), p1Bust = true) : console.log('Not > 21');
+          (p1Turn = false, p2Turn = true, checkTurnText(), p1Bust = true, (gameMode === "bot") ? botAI() : console.log('Not Bots Turn')) : console.log('did not bust');
+
+          
 
      } else {
           //Sets p2Score variable = to score returned from checkscore and also checks to see if p2Score is > 21
@@ -99,8 +104,6 @@ let updateScore = card => {
            
      }
 };
-
-
 
 let randCard = () => {
      //Chooses random card from the array of card choices
@@ -116,12 +119,9 @@ let checkTurnText = () => {
      //Updates text to show who's turn it is
      p1Turn ? (alertText.textContent = `Its Player 1's turn!`, box1Title.style = 'text-decoration: underline;', 
      box2Title.style = 'text-decoration: none;') : 
-     (alertText.textContent = `Its Player 2's turn!`, 
+     ((gameMode === 'bot') ? (alertText.textContent = `It's the Bot's turn!`): (alertText.textContent = `Its Player 2's turn!`),
      box2Title.style = 'text-decoration: underline;', 
      box1Title.style = 'text-decoration: none;');
-
-
-
 }
 
 let checkScore = (pScore, pText, value, card) => {
@@ -142,7 +142,7 @@ let checkScore = (pScore, pText, value, card) => {
 
 let stand = () => {
      if(!gameOver){
-          p1Turn ? (p2Turn = true, p1Turn = false, checkTurnText()) : checkWinner();
+          p1Turn ? (p2Turn = true, p1Turn = false, checkTurnText(), gameMode === 'bot' ? botAI() : console.log('bot is not being called')) : checkWinner();
      }
 }
 
@@ -159,6 +159,8 @@ let deal = () => {
           p2Score = 0;
           p2Text.textContent = p2Score;
           p1Text.textContent = p1Score;
+          p1Text.style.color = 'white';
+          p2Text.style.color = 'white';
           let gameOverAlert = document.querySelector(".alert-game-over");
           gameOverAlert.remove();
           clearBoard();
@@ -168,7 +170,7 @@ let deal = () => {
 }
 
 let checkMode = () => {
-
+     gameMode = JSON.parse(localStorage.getItem('mode'));
 }
 
 let clearBoard = () => {
@@ -185,7 +187,7 @@ let checkWinner = () => {
      (p1Bust && p2Bust || p1Score === p2Score) ? 
      (alertText.textContent = 'Draw', draws += 1, drawsText.textContent = draws) :
      (p1Bust || p2Score > p1Score) ? 
-     (alertText.textContent = 'Player 2 has won!', p2Wins += 1, p2WinsText.textContent = p2Wins) :
+     ((gameMode === 'bot') ? (alertText.textContent = `The Bot has won!`) : (alertText.textContent = 'Player 2 has won!'), p2Wins += 1, p2WinsText.textContent = p2Wins) :
      (p2Bust || p1Score > p2Score) ? 
      (alertText.textContent = 'Player 1 has won!', p1Wins += 1, p1WinsText.textContent = p1Wins) : 
      alertText.textContent = 'Something went horribly wrong!';
@@ -193,6 +195,18 @@ let checkWinner = () => {
      header.innerHTML += '<p class="alert-game-over">GAME OVER, CLICK DEAL TO PLAY AGAIN</p>';
      gameOver = true;
 }    
+
+let botAI = () => {
+     setTimeout(() => {
+          (p1Score > 21) ? (hit(), stand()) :
+          (p2Score === 21 || p1Score < p2Score) ? stand() : 
+          (p1Score > p2Score && p2Score < 17) ? (hit(), botAI()) : 
+          (p1Score === p2Score && p2Score < 17) ? (hit(), botAI()) : stand();
+     }, 1000);
+     
+}
+
+
 
 /*
 =============== 
@@ -204,4 +218,6 @@ hitBtn.addEventListener('click', hit);
 standBtn.addEventListener('click', stand);
 dealBtn.addEventListener('click', deal);
 checkTurnText();
+checkMode();
 
+(gameMode === 'bot') ? (document.querySelector(".other-player").textContent = 'BotWins', document.querySelector(".box2-title").innerHTML = 'Bot: <span class="p2Score">0</span>') : console.log('No changes were made');
