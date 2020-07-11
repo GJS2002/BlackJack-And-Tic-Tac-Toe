@@ -30,7 +30,7 @@ Media quereys/animations
      }
 }
 
-@mixin ipadThick{
+@mixin ipadPro-4K{
      @media (min-width: 1024px) and (min-height: 1024px){
           @content;
      }
@@ -218,7 +218,7 @@ Main css
                font-size: 10em;
           }
 
-          @include ipadThick{
+          @include ipadPro-4K{
                font-size: 10em;
           }
      }
@@ -238,7 +238,7 @@ Main css
                font-size: 10em;
           }
 
-          @include ipadThick{
+          @include ipadPro-4K{
                font-size: 10em;
           }
      }
@@ -259,7 +259,7 @@ Main css
                font-size: 10em;
           }
 
-          @include ipadThick{
+          @include ipadPro-4K{
                font-size: 10em;
           }
      }
@@ -288,7 +288,7 @@ Main css
           font-size: 3em;
      }
      
-     @include ipadThick{
+     @include ipadPro-4K{
           font-size: 4em;
      }
 
@@ -361,7 +361,7 @@ main{
           font-size: 3em;
      }
      
-     @include ipadThick{
+     @include ipadPro-4K{
           font-size: 4em;
      }
 
@@ -396,7 +396,7 @@ header{
           font-size: 2em;
      }
      
-     @include ipadThick{
+     @include ipadPro-4K{
           font-size: 3em;
      }
      
@@ -450,7 +450,7 @@ section{
                     font-size: 3em;
                }
                
-               @include ipadThick{
+               @include ipadPro-4K{
                     font-size: 4em;
                }
           
@@ -473,7 +473,7 @@ section{
                     width: 6em;
                }
                
-               @include ipadThick{
+               @include ipadPro-4K{
                     margin: 2em;
                     height: 13em;
                     width: 10em;    
