@@ -16,11 +16,8 @@ const cardValues = {
      'J': 10,
      'Q': 10,
      'K': 10,
-     'A': {low: 1, high: 11}, 
+     'A': 'A', 
 };
-
-const {A} = cardValues;
-const {low, high} = A;
 
 const cardChoices = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A'];
 
@@ -77,14 +74,15 @@ const hit = () => {
                //Adds a card to the player2/bot div on the screen
                box2.innerHTML += `<img src="./Static/css/images/${theCard}.png" alt="" id="card"> `;     
           }
+          //Updates the score based on the card chosen
+          updateScore(theCard);
      }
-     //Updates the score based on the card chosen
-     updateScore(theCard);
 };
 
 let updateScore = card => {
     //Gets the value of the card that was put in the function parameters
     let value = cardValues[card];
+
 
     let p1Text = document.querySelector(".p1Score");
     let p2Text = document.querySelector(".p2Score");
@@ -131,11 +129,13 @@ let checkTurnText = () => {
 }
 
 let checkScore = (pScore, pText, value, card) => {
+     
+     
      //Updates the current players score and updates it based on card, if card is Ace The code then decides to add its low or high value based on the players current score
      (pScore > 10 && card === 'A') ? 
-     (pScore += low, pText.textContent = pScore) : 
+     (pScore += 1, pText.textContent = pScore) : 
      (pScore < 10 && card === 'A') ? 
-     (pScore += low, pText.textContent = pScore) :
+     (pScore += 11, pText.textContent = pScore) :
      (pScore += value, pText.textContent = pScore);
 
      //If score is greater than 21, then the text will say you have busted
@@ -204,7 +204,7 @@ let checkWinner = () => {
      (p1Bust && p2Bust || p1Score === p2Score) ?
      //Adds +1 to draws on the table and displayes the text Draw where the alert is 
      (alertText.textContent = 'Draw', draws += 1, drawsText.textContent = draws) :
-     (p1Bust || p2Score > p1Score) ? 
+     (p1Bust || p2Score > p1Score && !p2Bust) ? 
      //Adds +1 to Player 2 wins/Bot wins on the table and displays the text Player 2/Bot has won where the alert is 
      ((gameMode === 'bot') ? (alertText.textContent = `The Bot has won!`) : (alertText.textContent = 'Player 2 has won!'), p2Wins += 1, p2WinsText.textContent = p2Wins) :
      (p2Bust || p1Score > p2Score) ? 
