@@ -1,0 +1,108 @@
+/*
+=============== 
+Variables
+===============
+*/
+@import url('https://fonts.googleapis.com/css?family=Oswald|Sacramento&display=swap');
+
+$gradient: linear-gradient(45deg,#03001E,#7303C0 ,#EC38BC);
+
+$color1: #03001E;
+$color2: #7303C0;
+$color3: #EC38BC;
+
+$ff-primary: 'Sacramento', cursive;
+$ff-secondary: 'Oswald', sans-serif;
+
+
+
+/*
+=============== 
+Media quereys/animations
+===============
+*/
+
+
+@keyframes fade {
+     0%{
+          z-index: 10;
+          opacity: 1;
+     }
+
+     50%{
+          opacity: 1;
+     }
+
+     100%{
+          opacity: 0;
+     }
+}
+
+@keyframes slide {
+     0%{
+          margin-right: 100%;
+     }
+
+     100%{
+          margin-right: 0%;
+     }
+}
+
+
+@mixin mobileSide{
+     @media (min-width: 568px) and (max-width: 823px) and (max-height: 500px){
+          @content;
+     }
+}
+
+@mixin ipadSmall{
+     @media (min-width: 768px) and (max-height: 1024px) and (min-height: 768px){
+          @content;
+     }
+}
+
+@mixin ipadPro-4k{
+     @media (min-width: 1024px) and (min-height: 1024px){
+          @content;
+     }
+}
+
+
+
+/*
+=============== 
+Main css for the page
+===============
+*/
+
+.cover{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     position: fixed;
+     height: 100%;
+     width: 100%;
+     z-index: -1;
+     background: black;
+     color: white;
+     opacity: 0;
+
+     @include ipadSmall{
+          font-size: 3em;
+     }
+     
+     @include ipadPro-4k{
+          font-size: 4em;
+     }
+
+     h1{
+          text-align: center;
+          font-family: $ff-primary;
+          letter-spacing: 10px;
+          text-decoration: none;
+          animation: slide 1s linear;
+          
+     }
+
+     animation: fade 3s linear;
+}

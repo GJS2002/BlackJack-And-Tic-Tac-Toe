@@ -1,0 +1,101 @@
+/*
+=============== 
+Variables
+===============
+*/
+@import url("https://fonts.googleapis.com/css?family=Oswald|Sacramento&display=swap");
+/*
+=============== 
+Media quereys/animations
+===============
+*/
+@-webkit-keyframes fade {
+  0% {
+    z-index: 10;
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes fade {
+  0% {
+    z-index: 10;
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes slide {
+  0% {
+    margin-right: 100%;
+  }
+  100% {
+    margin-right: 0%;
+  }
+}
+
+@keyframes slide {
+  0% {
+    margin-right: 100%;
+  }
+  100% {
+    margin-right: 0%;
+  }
+}
+
+/*
+=============== 
+Main css for the page
+===============
+*/
+.cover {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background: black;
+  color: white;
+  opacity: 0;
+  -webkit-animation: fade 3s linear;
+          animation: fade 3s linear;
+}
+
+@media (min-width: 768px) and (max-height: 1024px) and (min-height: 768px) {
+  .cover {
+    font-size: 3em;
+  }
+}
+
+@media (min-width: 1024px) and (min-height: 1024px) {
+  .cover {
+    font-size: 4em;
+  }
+}
+
+.cover h1 {
+  text-align: center;
+  font-family: "Sacramento", cursive;
+  letter-spacing: 10px;
+  text-decoration: none;
+  -webkit-animation: slide 1s linear;
+          animation: slide 1s linear;
+}
+/*# sourceMappingURL=tictac.css.map */

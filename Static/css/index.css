@@ -9,6 +9,51 @@ Variables
 Media quereys/animations
 ===============
 */
+@-webkit-keyframes fade {
+  0% {
+    z-index: 10;
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes fade {
+  0% {
+    z-index: 10;
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes slide {
+  0% {
+    position: absolute;
+    left: 100%;
+  }
+  100% {
+    left: 0%;
+  }
+}
+
+@keyframes slide {
+  0% {
+    position: absolute;
+    left: 100%;
+  }
+  100% {
+    left: 0%;
+  }
+}
+
 @-webkit-keyframes fall {
   0%, 100% {
     left: -20%;
@@ -27,6 +72,7 @@ Media quereys/animations
     bottom: -100%;
   }
 }
+
 @keyframes fall {
   0%, 100% {
     left: -20%;
@@ -456,7 +502,7 @@ main {
   width: 100vw;
 }
 
-main h1 {
+main h1:not(.cover-text) {
   text-align: center;
   text-decoration: underline;
   font-family: "Sacramento", cursive;
@@ -465,13 +511,13 @@ main h1 {
 }
 
 @media (min-width: 768px) and (max-height: 1024px) and (min-height: 768px) {
-  main h1 {
+  main h1:not(.cover-text) {
     font-size: 7em;
   }
 }
 
 @media (min-width: 1024px) and (min-height: 1024px) {
-  main h1 {
+  main h1:not(.cover-text) {
     font-size: 10em;
   }
 }
@@ -676,5 +722,49 @@ main article button span:nth-child(4), main article a span:nth-child(4) {
   main article button span:nth-child(2), main article button span:nth-child(4), main article a span:nth-child(2), main article a span:nth-child(4) {
     width: 8px;
   }
+}
+
+.cover {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background: black;
+  color: white;
+  opacity: 0;
+  -webkit-animation: fade 3s linear;
+          animation: fade 3s linear;
+}
+
+@media (min-width: 768px) and (max-height: 1024px) and (min-height: 768px) {
+  .cover {
+    font-size: 3em;
+  }
+}
+
+@media (min-width: 1024px) and (min-height: 1024px) {
+  .cover {
+    font-size: 4em;
+  }
+}
+
+.cover h2 {
+  text-align: center;
+  font-size: 6em;
+  font-family: "Sacramento", cursive;
+  letter-spacing: 10px;
+  text-decoration: none;
+  width: 100vw;
+  -webkit-animation: slide 1s linear;
+          animation: slide 1s linear;
 }
 /*# sourceMappingURL=index.css.map */

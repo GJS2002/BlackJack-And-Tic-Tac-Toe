@@ -22,7 +22,31 @@ Media quereys/animations
 ===============
 */
 
+@keyframes fade {
+     0%{
+          z-index: 10;
+          opacity: 1;
+     }
 
+     50%{
+          opacity: 1;
+     }
+
+     100%{
+          opacity: 0;
+     }
+}
+
+@keyframes slide {
+     0%{
+          position: absolute;
+          left: 100%;
+     }
+
+     100%{
+          left: 0%;
+     }
+}
 
 @keyframes fall {
      0%, 100%{
@@ -278,7 +302,7 @@ main{
      height: minmax(100vh, max-content);
      width: 100vw;
 
-     h1{
+     h1:not(.cover-text){
           text-align: center;
           text-decoration: underline;
           font-family: $ff-primary;
@@ -456,3 +480,36 @@ main{
      }
 }
 
+.cover{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     position: fixed;
+     height: 100%;
+     width: 100%;
+     z-index: -1;
+     background: black;
+     color: white;
+     opacity: 0;
+
+     @include ipadSmall{
+          font-size: 3em;
+     }
+     
+     @include ipadPro-4k{
+          font-size: 4em;
+     }
+
+     h2{
+          text-align: center;
+          font-size: 6em;
+          font-family: $ff-primary;
+          letter-spacing: 10px;  
+          text-decoration: none;
+          width: 100vw;
+          animation: slide 1s linear;
+          
+     }
+
+     animation: fade 3s linear;
+}
