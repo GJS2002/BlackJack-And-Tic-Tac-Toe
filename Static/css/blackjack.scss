@@ -31,7 +31,7 @@ Media quereys/animations
 }
 
 @mixin ipadThick{
-     @media (min-width: 1024px) and (max-height: 1366px) and (min-height: 1024px){
+     @media (min-width: 1024px) and (min-height: 1024px){
           @content;
      }
 }
@@ -289,7 +289,7 @@ Main css
      }
      
      @include ipadThick{
-          font-size: 3em;
+          font-size: 4em;
      }
 
      &::before{
@@ -362,7 +362,7 @@ main{
      }
      
      @include ipadThick{
-          font-size: 3em;
+          font-size: 4em;
      }
 
      
@@ -397,7 +397,7 @@ header{
      }
      
      @include ipadThick{
-          font-size: 2em;
+          font-size: 3em;
      }
      
      table{
@@ -451,7 +451,7 @@ section{
                }
                
                @include ipadThick{
-                    font-size: 3em;
+                    font-size: 4em;
                }
           
           }
@@ -475,9 +475,8 @@ section{
                
                @include ipadThick{
                     margin: 2em;
-                    height: 7em;
-                    width: 6em;
-                    
+                    height: 13em;
+                    width: 10em;    
                }
           
           }

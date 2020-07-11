@@ -125,11 +125,14 @@ Media quereys/animations
      }
 }
 
-@mixin ipadThick{
-     @media (min-width: 1024px) and (max-height: 1366px) and (min-height: 1024px){
+@mixin ipadPro-4k{
+     @media (min-width: 1024px) and (min-height: 1024px){
           @content;
      }
 }
+
+
+
 
 /*
 =============== 
@@ -212,7 +215,7 @@ Main Menu
                font-size: 10em;
           }
 
-          @include ipadThick{
+          @include ipadPro-4k{
                font-size: 10em;
           }
      }
@@ -232,7 +235,7 @@ Main Menu
                font-size: 10em;
           }
 
-          @include ipadThick{
+          @include ipadPro-4k{
                font-size: 10em;
           }
      }
@@ -253,7 +256,7 @@ Main Menu
                font-size: 10em;
           }
 
-          @include ipadThick{
+          @include ipadPro-4k{
                font-size: 10em;
           }
      }
@@ -285,9 +288,10 @@ main{
           @include ipadSmall {
                font-size: 7em;
           }
-          @include ipadThick {
+          @include ipadPro-4k {
                font-size: 10em;
           }
+          
      }
 
      article{
@@ -307,6 +311,13 @@ main{
                font-family: $ff-primary;
                font-weight: bolder;
                font-size: 2.5em;
+               @include ipadSmall {
+                    font-size: 5em;
+               }
+
+               @include ipadPro-4k {
+                    font-size: 7em;
+               }
           }
 
           .Mode, .Game{
@@ -350,7 +361,7 @@ main{
                     font-size: 2em;
                }
 
-               @include ipadThick{
+               @include ipadPro-4k{
                     font-size: 3em;
                }
 
@@ -430,13 +441,13 @@ main{
                     }
 
                     &:nth-child(1), &:nth-child(3){
-                         @include ipadThick{
+                         @include ipadPro-4k{
                               height: 8px;
                          }
                     }
 
                     &:nth-child(2), &:nth-child(4){
-                         @include ipadThick{
+                         @include ipadPro-4k{
                               width: 8px;
                          }
                     }
