@@ -36,21 +36,19 @@ Media quereys/animations
 
 @-webkit-keyframes slide {
   0% {
-    position: absolute;
-    left: 100%;
+    margin-right: 100%;
   }
   100% {
-    left: 0%;
+    margin-right: 0%;
   }
 }
 
 @keyframes slide {
   0% {
-    position: absolute;
-    left: 100%;
+    margin-right: 100%;
   }
   100% {
-    left: 0%;
+    margin-right: 0%;
   }
 }
 
@@ -735,6 +733,7 @@ main article button span:nth-child(4), main article a span:nth-child(4) {
       -ms-flex-align: center;
           align-items: center;
   position: fixed;
+  top: 0;
   height: 100%;
   width: 100%;
   z-index: -1;

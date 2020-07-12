@@ -129,8 +129,6 @@ let checkTurnText = () => {
 }
 
 let checkScore = (pScore, pText, value, card) => {
-     
-     
      //Updates the current players score and updates it based on card, if card is Ace The code then decides to add its low or high value based on the players current score
      (pScore > 10 && card === 'A') ? 
      (pScore += 1, pText.textContent = pScore) : 
@@ -178,7 +176,7 @@ let deal = () => {
           //Find funcitons, there are comments with them that explain what they do
           clearBoard();
           checkTurnText();
-          hit();
+          startingCards();
      }
 }
 
@@ -236,6 +234,31 @@ let addEvents = () => {
      dealBtn.addEventListener('click', deal);
 }
 
+let startingCards = () => {
+     //gets random card
+     let p1Card = randCard();
+     let p2Card = randCard();
+     
+     
+     //Adds a card to the player1 div on the screen
+     box1.innerHTML += `<img src="./Static/css/images/${p1Card}.png" alt="" id="card"> `;
+     //Updates the score based on the card chosen
+     updateScore(p1Card);
+     setTimeout(() => {
+          //Shifts turns to correctly add score and give card to player 2
+          p1Turn = false;
+          p2Turn = true;
+          //Adds a card to the player2/bot div on the screen
+          box2.innerHTML += `<img src="./Static/css/images/${p2Card}.png" alt="" id="card"> `;     
+          //Updates the score based on the card chosen
+          updateScore(p2Card);
+          document.querySelector(".p2Score").textContent = p2Score;
+          //Resets turn values to resume normal play
+          p1Turn = true;
+          p2Turn = false;    
+     }, 100);
+}
+
 /*
 =============== 
 Events 
@@ -244,6 +267,7 @@ Events
 addEvents();
 checkTurnText();
 checkMode();
+startingCards();
 
 //Checks if the gameMode is bot, if it is then it will change the text displayed to let the user know they are playing against a bot
 (gameMode === 'bot') ? (document.querySelector(".other-player").textContent = 'BotWins', document.querySelector(".box2-title").innerHTML = 'Bot: <span class="p2Score">0</span>') : console.log('No changes were made');

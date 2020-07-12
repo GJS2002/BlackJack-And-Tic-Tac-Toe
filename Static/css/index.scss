@@ -39,12 +39,11 @@ Media quereys/animations
 
 @keyframes slide {
      0%{
-          position: absolute;
-          left: 100%;
+          margin-right: 100%;
      }
 
      100%{
-          left: 0%;
+          margin-right: 0%;
      }
 }
 
@@ -485,6 +484,7 @@ main{
      justify-content: center;
      align-items: center;
      position: fixed;
+     top: 0;
      height: 100%;
      width: 100%;
      z-index: -1;
