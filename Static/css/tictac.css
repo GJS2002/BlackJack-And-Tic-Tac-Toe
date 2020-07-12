@@ -799,6 +799,13 @@ Main css for the page
   border-right: 3px solid black;
 }
 
+@media (min-width: 1024px) and (min-height: 1024px) {
+  .box-5, .box-8, .box-2 {
+    border-left: 1em solid black;
+    border-right: 1em solid black;
+  }
+}
+
 body {
   min-height: 100vh;
   background: linear-gradient(45deg, #03001E, #7303C0, #EC38BC);
@@ -850,6 +857,13 @@ main .board section:nth-child(2) {
   border-bottom: 3px solid black;
 }
 
+@media (min-width: 1024px) and (min-height: 1024px) {
+  main .board section:nth-child(2) {
+    border-top: 1em solid black;
+    border-bottom: 1em solid black;
+  }
+}
+
 main .board section div {
   width: 5em;
 }
@@ -871,12 +885,21 @@ main .board section div {
   main .board {
     height: 42em;
     width: 42em;
+    margin-top: 6em;
   }
   main .board section {
     height: 14em;
   }
+  main .board section:nth-child(2) {
+    border-top: 1em solid black;
+    border-bottom: 1em solid black;
+  }
   main .board section div {
     width: 14em;
+  }
+  main .board section div img {
+    height: 10em;
+    width: 10em;
   }
 }
 
@@ -938,6 +961,20 @@ header p {
   margin: 1em;
 }
 
+header div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+header div p {
+  margin: .5em;
+}
+
 menu {
   margin: 2em 0 2em 0;
   width: 100%;
@@ -977,12 +1014,6 @@ menu {
   margin: .5em;
 }
 
-@media (min-width: 768px) and (max-height: 1024px) and (min-height: 768px) {
-  .btn {
-    font-size: 3em;
-  }
-}
-
 .btn::before {
   content: '';
   position: absolute;
@@ -1006,6 +1037,19 @@ menu {
 
 .btn:hover::before, .btn :focus::before {
   right: -100%;
+}
+
+@media (min-width: 768px) and (max-height: 1024px) and (min-height: 768px) {
+  .btn {
+    font-size: 3em;
+  }
+}
+
+@media (min-width: 1024px) and (min-height: 1024px) {
+  .btn {
+    margin-top: 4em;
+    font-size: 4em;
+  }
 }
 
 .cover {

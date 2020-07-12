@@ -290,6 +290,8 @@ Main css for the page
                     height: 5em;
                     width: 5em;
                }
+
+               
           }
      }
 }
@@ -298,6 +300,10 @@ Main css for the page
      &5, &8, &2{
           border-left: 3px solid black;
           border-right: 3px solid black;
+          @include ipadPro-4k(){
+               border-left: 1em solid black;
+               border-right: 1em solid black;
+          }
      }
 }
 
@@ -333,9 +339,14 @@ main{
                &:nth-child(2){
                     border-top: 3px solid black;
                     border-bottom: 3px solid black;
+                    @include ipadPro-4k(){
+                         border-top: 1em solid black;
+                         border-bottom: 1em solid black;
+                    }
                }
                div{
                     width: 5em;
+                    
                }
           }
 
@@ -354,11 +365,19 @@ main{
           @include ipadPro-4k(){
                height: 42em;
                width: 42em;
+               margin-top: 6em;
                section{
                     height: 14em;
-     
+                    &:nth-child(2){
+                         border-top: 1em solid black;
+                         border-bottom: 1em solid black;
+                    }
                     div{
                          width: 14em;
+                         img{
+                              height: 10em;
+                              width: 10em;
+                         }
                     }
                }
           }
@@ -407,10 +426,16 @@ header{
           margin: 1em;
      }
 
+     div{
+          display: flex;
+          flex-direction: row;
+          p{
+               margin: .5em;
+          }
+     }
+
      
 }
-
-
 
 menu{
      margin: 2em 0 2em 0;
@@ -440,13 +465,7 @@ menu{
      font-family: $ff-secondary;
      margin: .5em;
 
-     @include ipadSmall{
-          font-size: 3em;
-     }
      
-     @mixin ipadPro-4k{
-          font-size: 4em;
-     }
 
      &::before{
           content: '';
@@ -468,6 +487,15 @@ menu{
 
      &:hover::before, :focus::before{
           right: -100%;
+     }
+
+     @include ipadSmall{
+          font-size: 3em;
+     }
+     
+     @include ipadPro-4k{
+          margin-top: 4em;
+          font-size: 4em;
      }
 
 }
