@@ -48,6 +48,96 @@ Media quereys/animations
      }
 }
 
+@keyframes fall {
+     0%, 100%{
+          left: -20%;
+          bottom: 100%;
+          transform: rotate(45deg); 
+     }
+
+     97%{
+          left: -10%;
+          bottom: -100%;
+          transform: rotate(360deg); 
+     }
+
+     98%{
+          left: -300%;
+          bottom: -100%;
+     }
+}
+
+@keyframes fall2 {
+     0%, 100%{
+          top: -100%;
+          right: -20%;
+          transform: rotate(-45deg); 
+     }
+
+     97%{
+          top: 200%;
+          right: -20%;
+          transform: rotate(-360deg);
+     }
+
+     98%{
+          top: -100%;
+          right: -200%; 
+     }
+}
+
+@keyframes bounce{
+     0%, 100%{
+          transform: rotate(20deg);
+          right: 10%;
+          top: 70%;
+     }
+
+     20%{
+          transform: rotate(100deg);
+          right: 0%;
+     }
+
+     60%{
+          right: 80%;
+          transform: rotate(360deg);
+          top: 40%;
+     }
+}
+
+@keyframes bounce2{
+     0%, 100%{
+          top: 5%;
+          left: 30%;
+     }
+
+     20%{
+          top: 0%;
+          left: 50%;
+     }
+
+     60%{
+          left: 80%;
+          top: 40%;
+     }
+}
+
+@keyframes bounce3{
+     0%, 100%{
+          transform: rotate(-20deg);
+          left: 5%;
+     }
+
+     50%{
+          top: 80%;
+          left: 10%;
+          transform: rotate(-360deg);
+     }
+
+     
+}
+
+
 
 @mixin mobileSide{
      @media (min-width: 568px) and (max-width: 823px) and (max-height: 500px){
@@ -77,14 +167,130 @@ Main css for the page
 *{
      margin: 0;
      padding: 0;
+     list-style: none;
      box-sizing: border-box;
+     text-align: center;
 }
+
+
+@for $i from 1 to 6 {
+     .detail-#{$i}{
+         position: fixed;
+         opacity: .1; 
+         z-index: -1;
+         height: 40%;
+          @include mobileSide{
+               height: 70%;
+              
+          }
+          
+          @include ipadSmall{
+               height: 50%;
+          }
+     }
+}
+
+.detail-{
+
+     &1{
+          left: -5%;
+          bottom: -10%;
+          transform: rotate(45deg);    
+          animation: fall 30s linear infinite;
+     }
+
+     &2{
+          top: 0%;
+          right: -5%;
+          transform: rotate(-45deg);
+          animation: fall2 40s linear infinite;
+     }
+
+     &3{
+          font-size: 5em;
+          transform: rotate(20deg);
+          right: 10%;
+          top: 70%;
+          height: max-content;
+          width: max-content;
+          animation: bounce 30s linear infinite;
+          @include mobileSide{
+               font-size: 5em;   
+          }
+          
+          @include ipadSmall{
+               font-size: 10em;
+          }
+
+          @include ipadPro-4k{
+               font-size: 10em;
+          }
+     }
+
+     &4{
+          font-size: 5em;
+          top: 5%;
+          left: 30%;
+          height: max-content;
+          width: max-content;
+          animation: bounce2 30s linear infinite;
+          @include mobileSide{
+               font-size: 5em;   
+          }
+          
+          @include ipadSmall{
+               font-size: 10em;
+          }
+
+          @include ipadPro-4k{
+               font-size: 10em;
+          }
+     }
+
+     &5{
+          font-size: 5em;
+          transform: rotate(-20deg);
+          left: 5%;
+          top: 50%;
+          height: max-content;
+          width: max-content;
+          animation: bounce3 30s linear infinite;
+          @include mobileSide{
+               font-size: 5em;   
+          }
+          
+          @include ipadSmall{
+               font-size: 10em;
+          }
+
+          @include ipadPro-4k{
+               font-size: 10em;
+          }
+     }
+}
+
 
 @for $i from 1 to 12 {
      .box-#{$i}{
           display: flex;
           justify-content: center;
           align-items: center;
+          transition: .3s linear;
+          
+          &:hover:not(.X):not(.O){
+               cursor: pointer;
+               background: rgba($color1, .4);
+          }
+
+          img{
+               height: 3em;
+               width: 3em;
+
+               @include ipadSmall{
+                    height: 5em;
+                    width: 5em;
+               }
+          }
      }
 }
 
@@ -95,21 +301,35 @@ Main css for the page
      }
 }
 
-main{
-     height: 100vh;
-     width: 100vw;
+body{ 
+     min-height: 100vh;
+     background: $gradient;
      display: flex;
-     flex-direction: column;
      justify-content: center;
      align-items: center;
+}
+
+
+
+main{
+     display: flex;
+     justify-content: flex-start;
+     align-items: center;
+     flex-direction: column;
+     min-height: 100vh;
+     width: 100vw;
      .board{
           width: 15em;
           height: 15em;
           margin: 1em;
+          margin-top: 2em;
+
+
           section{
                display: flex;
                height: 5em;
 
+               
                &:nth-child(2){
                     border-top: 3px solid black;
                     border-bottom: 3px solid black;
@@ -119,7 +339,137 @@ main{
                }
           }
 
+          @include ipadSmall(){
+               height: 21em;
+               width: 21em;
+               section{
+                    height: 7em;
+
+                    div{
+                         width: 7em;
+                    }
+               }
+          }
+          
+          @include ipadPro-4k(){
+               height: 42em;
+               width: 42em;
+               section{
+                    height: 14em;
+     
+                    div{
+                         width: 14em;
+                    }
+               }
+          }
      }
+}
+
+header{
+     display: flex;
+     flex-wrap: wrap;
+     padding: 1em 1em 0 1em;
+     background: rgba($color1, .6);
+     width: 100%;
+     height: max-content;
+     color: $color3;
+     font-family: $ff-secondary;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     font-size: 1.25em;
+
+     @include ipadSmall{
+          font-size: 2em;
+     }
+     
+     @include ipadPro-4k{
+          font-size: 3em;
+     }
+     
+     table{
+          border: 3px solid $color3;
+     }
+
+     th{
+          padding: 0 .5em 0 .5em;
+          h1{
+               font-size: 1.25em;
+               text-decoration: underline;
+               font-family: $ff-secondary;
+          }
+     }
+
+     p{
+          font-weight: bold;
+          font-size: 1.5em;
+          transition: .3s linear;
+          margin: 1em;
+     }
+
+     
+}
+
+
+
+menu{
+     margin: 2em 0 2em 0;
+     width: 100%;
+     height: max-content;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-wrap: wrap;
+}
+
+.btn{
+     overflow: hidden;
+     background: none;
+     border: none;
+     cursor: pointer;
+     text-align: center;
+     text-decoration: none;
+     color: $color3;
+     font-weight: bolder;
+     font-size: 1.5em;
+     padding: .5em;
+     position: relative;
+     background: rgba($color1, .7);
+     transition: .5s linear;
+     min-width: 5em;
+     font-family: $ff-secondary;
+     margin: .5em;
+
+     @include ipadSmall{
+          font-size: 3em;
+     }
+     
+     @mixin ipadPro-4k{
+          font-size: 4em;
+     }
+
+     &::before{
+          content: '';
+          position: absolute;
+          background: linear-gradient(90deg, transparent, #fff,transparent);
+          height: 100%;
+          width: 100%;
+          right: 100%;
+          top: 0%;
+          transition: .3s linear;
+     }
+
+     &:hover, :focus{
+          background: $color3;
+          color: $color1;
+          box-shadow: 0 0 10px $color3, 0 0 40px $color3, 0 0 80px $color3;
+          outline: none;
+     }
+
+     &:hover::before, :focus::before{
+          right: -100%;
+     }
+
 }
 
 .cover{

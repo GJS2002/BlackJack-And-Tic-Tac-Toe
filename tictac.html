@@ -3,7 +3,9 @@
 <head>
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script defer src="https://kit.fontawesome.com/b9865150d6.js" crossorigin="anonymous"></script>
      <link rel="stylesheet" href="./Static/css/tictac.css">
+     <script src="./Static/js/tictac.js"></script>
      <title>Main Menu</title>
 </head>
 <body>
@@ -11,30 +13,55 @@
           <!-- <div class="cover">
                <h1>Tic-Tac-TOE</h1>
           </div> -->
-          <ul>
-               <li><a href="./index.html"><h1>Back To Main Menu</h1></a></li>
-
-          </ul>
-          <h1>TicTacToe</h1>
-
+          <header class="score">
+               <table>
+                    <tbody>
+                         <tr>
+                              <th><h1>P1Wins</h1></th>
+                              <th><h1 class="other-player">P2Wins</h1></th>
+                              <th><h1>Draws</h1></th>
+                         </tr>
+                         <tr>
+                              <td><span class="p1Wins">0</span></td>
+                              <td><span class="p2Wins">0</span></td>
+                              <td><span class="Draws">0</span></td>
+                         </tr>
+                    </tbody>
+               </table>
+               <p class="alert">Its Player 1's turn!</p>
+          </header>
+          
           <div class="board">
                <section class="row-1">
-                    <div class="box-1 X">X</div>
-                    <div class="box-2 O">O</div>
-                    <div class="box-3 X">X</div>
+                    <div class="box-1 X">
+                         <img src="./Static/css/images/times.png" alt="">
+                    </div>
+                    <div class="box-2 O">
+                         <img src="./Static/css/images/circle.png" alt="">
+                    </div>
+                    <div class="box-3"></div>
                </section>
                <section class="row-2">
-                    <div class="box-4 O">X</div>
-                    <div class="box-5 X">O</div>
-                    <div class="box-6 O">X</div>
+                    <div class="box-4 "></div>
+                    <div class="box-5 "></div>
+                    <div class="box-6 "></div>
                </section>
                <section class="row-3">
-                    <div class="box-7 O">X</div>
-                    <div class="box-8 X">O</div>
-                    <div class="box-9 O">X</div>
+                    <div class="box-7 "></div>
+                    <div class="box-8 "></div>
+                    <div class="box-9 "></div>
                </section>
           </div>
-          
+
+          <menu>
+               <button class="btn btn-Clear">Clear Board</button>
+               <a href="./index.html" class="btn btn-Menu">Menu</a>
+          </menu>
+          <img src="./Static/css/images/A.png" alt="" class="detail-1">
+          <img src="./Static/css/images/10.png" alt="" class="detail-2">
+          <span class="detail-3"><i class="fas fa-times"></i></span>
+          <span class="detail-4"><i class="far fa-circle"></i></span>
+          <span class="detail-5"><i class="fas fa-times"></i></span>
      </main>
 </body>
 </html>
