@@ -3,6 +3,10 @@ let clearBtn = document.querySelector(".btn-Clear");
 
 let p1Turn = true;
 let p2Turn = false;
+let p1Win = false;
+let p2Win = false;
+
+
 let gameOver = false;
 let moves = 0;
 
@@ -10,8 +14,11 @@ let moves = 0;
 boxes.forEach(box => {
      box.addEventListener('click', e => {
           let box = e.currentTarget;
-          //If the box is filled then dont do anything, if its not filled then call the fillBox function
-          (!box.classList.contains('filled')) ? fillBox(box) : '';
+          if(!gameOver){
+
+               //If the box is filled then dont do anything, if its not filled then call the fillBox function
+               (!box.classList.contains('filled')) ? fillBox(box) : '';
+          }
      });
 });
 
@@ -21,8 +28,9 @@ let fillBox = box => {
      `);
      box.classList.add("filled");
      updateTurns();
+     checkForWinner();
      //Checks to see how many moves were made, if 9 moves were made then the boxes are all filled and the game is over as a draw
-     (moves === 9) ? gameOver = true : '';
+     (moves === 9) ? (gameOver = true, checkForWinner()) : '';
 }
 
 let clearBoard = () => {
@@ -47,5 +55,53 @@ let updateTurns = () => {
      moves += 1;
 }
 
+let checkForWinner = () => {
+     let xBoxes = document.querySelectorAll(".X");
+     let oBoxes = document.querySelectorAll(".O");
+     let X = [];
+     let O = [];
+
+     (checkWinLogic(xBoxes, X) === true) ? (gameOver = true, p1Win = true) : '';
+     
+     (checkWinLogic(oBoxes, O) === true) ? (gameOver = true, p2Win = true) : '';
+}
+
+let checkWinLogic = (boxes, boxArray) => {
+     let win = false;
+     
+     boxes.forEach(box => {
+          boxArray.push(parseFloat(box.id));
+     });
+     
+     boxArray.forEach(num => {
+          (num === 1) ? (
+               (boxArray.includes(num + 1) && boxArray.includes(num + 2))
+               ? (win = true) : 
+               (boxArray.includes(num + 3) && boxArray.includes(num + 6))
+               ? (win = true) : 
+               (boxArray.includes(num + 4) && boxArray.includes(num + 8))
+               ? (win = true) : ''
+          ) : 
+          (num === 2) ? (
+               (boxArray.includes(num + 3) && boxArray.includes(num + 6))
+               ? (win = true) : ''
+          ) : 
+          (num === 3) ? (
+               (boxArray.includes(num + 3) && boxArray.includes(num + 6))
+               ? (win = true) : 
+               (boxArray.includes(num + 2) && boxArray.includes(num + 4))
+               ? (win = true) : ''
+          ) : 
+          (num === 4) ? (
+               (boxArray.includes(num + 1) && boxArray.includes(num + 2))
+               ? (win = true) : ''
+          ) : 
+          (num === 7) ? (
+               (boxArray.includes(num + 1) && boxArray.includes(num + 2))
+               ? (win = true) : ''
+          ) : ''
+     });
+     return win;
+}
 
 clearBtn.addEventListener('click', clearBoard);
