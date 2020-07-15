@@ -1093,4 +1093,8 @@ menu {
   -webkit-animation: slide 1s linear;
           animation: slide 1s linear;
 }
+
+.hide {
+  display: none;
+}
 /*# sourceMappingURL=tictac.css.map */

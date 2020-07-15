@@ -16,7 +16,7 @@ const cardValues = {
      'J': 10,
      'Q': 10,
      'K': 10,
-     'A': 'A', 
+     'A': {low: 1, high: 11}, 
 };
 
 const cardChoices = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A'];
@@ -129,6 +129,7 @@ let checkTurnText = () => {
 }
 
 let checkScore = (pScore, pText, value, card) => {
+     console.log(card);
      //Updates the current players score and updates it based on card, if card is Ace The code then decides to add its low or high value based on the players current score
      (pScore > 10 && card === 'A') ? 
      (pScore += 1, pText.textContent = pScore) : 
