@@ -171,43 +171,53 @@ let botLogic = () => {
      if(!gameOver){
           let firstMoves = [boxes[6], boxes[0], boxes[2], boxes[8]];
           let allMoves = document.querySelectorAll(".available");
-          console.log(allMoves);
           (movesMade === 1 && !boxes[4].classList.contains("filled")) 
-          ? fillBox(boxes[4]) : (movesMade === 1 && boxes[4].classList.contains("filled")) ? fillBox(randomMove(firstMoves)) : fillBox(randomMove(allMoves));
-          
-     }
+          ? fillBox(boxes[4]) : (movesMade === 1 && boxes[4].classList.contains("filled")) ? fillBox(randomMove(firstMoves)) 
+          : (X.includes(1) && X.includes(2) && !boxes[2].classList.contains("filled")) ? fillBox(boxes[2]) :
 
-     /*X.forEach(num => {
-          (num === 1) ? (
-               (X.includes(num + 1) || boxArray.includes(num + 2))
-               ? fillBox() : 
-               (X.includes(num + 3) || boxArray.includes(num + 6))
-               ? fillBox() : 
-               (X.includes(num + 4) || boxArray.includes(num + 8))
-               ?  : ''
-          ) : 
-          (num === 2) ? (
-               (X.includes(num + 3) || boxArray.includes(num + 6))
-               ?  : ''
-          ) : 
-          (num === 3) ? (
-               (X.includes(num + 3) || boxArray.includes(num + 6))
-               ?  : 
-               (X.includes(num + 2) || boxArray.includes(num + 4))
-               ?  : ''
-          ) : 
-          (num === 4) ? (
-               (X.includes(num + 1) || boxArray.includes(num + 2))
-               ?  : ''
-          ) : 
-          (num === 7) ? (
-               (X.includes(num + 1) || boxArray.includes(num + 2))
-               ?  : ''
-          ) : ''
-     }); */
+               (X.includes(1) && X.includes(3) && !boxes[1].classList.contains("filled")) ? fillBox(boxes[1]) :
+
+               (X.includes(1) && X.includes(4) && !boxes[6].classList.contains("filled")) ? fillBox(boxes[6]) : 
+
+               (X.includes(1) && X.includes(7) && !boxes[3].classList.contains("filled")) ? fillBox(boxes[3]) : 
+
+               (X.includes(1) && X.includes(5) && !boxes[3].classList.contains("filled")) ?  fillBox(boxes[3]) : 
+
+               (X.includes(1) && X.includes(9) && !boxes[4].classList.contains("filled")) ?  fillBox(boxes[4]) : 
+           
+               (X.includes(2) && X.includes(5) && !boxes[7].classList.contains("filled")) ?  fillBox(boxes[7]) : 
+
+               (X.includes(2) && X.includes(8) && !boxes[4].classList.contains("filled")) ?  fillBox(boxes[4]) : 
+        
+          
+               (X.includes(3) && X.includes(6) && !boxes[8].classList.contains("filled")) ?  fillBox(boxes[8]) : 
+
+               (X.includes(3) && X.includes(9) && !boxes[5].classList.contains("filled")) ?  fillBox(boxes[5]) : 
+
+               (X.includes(3) && X.includes(5) && !boxes[6].classList.contains("filled")) ?  fillBox(boxes[6]) : 
+
+               (X.includes(3) && X.includes(7) && !boxes[4].classList.contains("filled")) ?  fillBox(boxes[4]) : 
+               
+               (X.includes(5) && X.includes(7) && !boxes[2].classList.contains("filled")) ?  fillBox(boxes[2]) : 
+
+
+               (X.includes(4) && X.includes(5) && !boxes[5].classList.contains("filled")) ?  fillBox(boxes[5]) :
+
+               (X.includes(4) && X.includes(6) && !boxes[4].classList.contains("filled")) ?  fillBox(boxes[4]) : 
+          
+
+               (X.includes(7) && X.includes(8) && !boxes[8].classList.contains("filled")) ?  fillBox(boxes[8]) :
+
+               (X.includes(7) && X.includes(9) && !boxes[7].classList.contains("filled")) ?  fillBox(boxes[7]) : 
+               
+               (fillBox(randomMove(allMoves)), console.log('yo6'))
+           
+          }
+
 }
 
 let randomMove = (array) => {
+     console.log('im being called');
      let randIndex = Math.floor(Math.random() * array.length);
      let currentMove = array[randIndex];
      return array[randIndex];
