@@ -933,12 +933,6 @@ header {
   }
 }
 
-@media (min-width: 1024px) and (min-height: 1024px) {
-  header {
-    font-size: 3em;
-  }
-}
-
 header table {
   border: 3px solid #EC38BC;
 }
@@ -973,6 +967,18 @@ header div {
 
 header div p {
   margin: .5em;
+}
+
+@media (min-width: 1024px) and (min-height: 1024px) {
+  header {
+    font-size: 3em;
+  }
+  header th h1 {
+    font-size: 1.5em;
+  }
+  header p {
+    font-size: 1.7em;
+  }
 }
 
 menu {

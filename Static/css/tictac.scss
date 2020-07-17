@@ -402,9 +402,7 @@ header{
           font-size: 2em;
      }
      
-     @include ipadPro-4k{
-          font-size: 3em;
-     }
+    
      
      table{
           border: 3px solid $color3;
@@ -431,6 +429,19 @@ header{
           flex-direction: row;
           p{
                margin: .5em;
+          }
+     }
+
+     @include ipadPro-4k{
+          font-size: 3em;
+          th{
+               h1{
+                    font-size: 1.5em;
+               }
+          }
+
+          p{
+               font-size: 1.7em;
           }
      }
 
