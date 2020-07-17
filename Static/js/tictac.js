@@ -13,6 +13,7 @@ Html DOM elements
 const boxes = document.querySelectorAll(".box");
 const clearBtn = document.querySelector(".btn-Clear");
 const turnText = document.querySelector(".alert");
+let p2NameText = document.querySelector("#p2Name");
 let p1WinsText = document.querySelector(".p1Wins");
 let p2WinsText = document.querySelector(".p2Wins");
 let draws = document.querySelector(".Draws");
@@ -42,6 +43,8 @@ Functions
 */
 
 
+
+
 boxes.forEach(box => {
      box.addEventListener('click', e => {
           let box = e.currentTarget;
@@ -67,7 +70,7 @@ let fillBox = box => {
      (mode === 'bot' && p2Turn) ? 
      setTimeout(() => {
           botLogic()
-     }, 1000)  : '';
+     }, 500)  : '';
      checkForWinner();
      //Checks to see how many moves were made, if 9 moves were made then the boxes are all filled and the game is over as a draw
      (movesMade === 9) ? (gameOver = true, checkForWinner(), clearBtn.classList.remove("hide"), draw = true, showWinner()) : '';
@@ -98,7 +101,7 @@ let clearBoard = () => {
 
 let updateTurns = () => {
      //If it's p1's turn then set that to false and set p2's turn to true and vise versa if its player 2's turn
-     (p1Turn) ? (p1Turn = false, p2Turn = true, turnText.textContent = `It's player 2's turn!`) : (p1Turn = true, p2Turn = false, turnText.textContent = `It's player 1's turn!`) 
+     (p1Turn && mode === 'player') ? (p1Turn = false, p2Turn = true, turnText.textContent = `It's player 2's turn!`) : (p1Turn && mode === 'bot') ? (p1Turn = false, p2Turn = true, turnText.textContent = `It's Bot's turn!`) : (p1Turn = true, p2Turn = false, turnText.textContent = `It's player 1's turn!`); 
      movesMade += 1;
      
 }
@@ -156,8 +159,10 @@ let checkWinLogic = (boxes, boxArray) => {
 let showWinner = array => {
      (p1Win) ? 
      (turnText.textContent = `Player 1 has won!`, p1WinsText.textContent = parseFloat(p1WinsText.textContent) + 1) : 
-     (p2Win) ? 
+     (p2Win && mode === 'player') ? 
      (turnText.textContent = `Player 2 has won!`, p2WinsText.textContent = parseFloat(p2WinsText.textContent) + 1) : 
+     (p2Win && mode === 'bot') ? 
+     (turnText.textContent = `Bot has won!`, p2WinsText.textContent = parseFloat(p2WinsText.textContent) + 1) : 
      (draw) ? (turnText.textContent = `Draw`, draws.textContent = parseFloat(draws.textContent) + 1) : ''
 
      array.forEach(num => {
@@ -210,6 +215,8 @@ let botLogic = () => {
 
                (X.includes(7) && X.includes(9) && !boxes[7].classList.contains("filled")) ?  fillBox(boxes[7]) : 
                
+               (X.includes(8) && X.includes(9) && !boxes[6].classList.contains("filled")) ?  fillBox(boxes[6]) : 
+
                (fillBox(randomMove(allMoves)), console.log('yo6'))
            
           }
@@ -231,3 +238,4 @@ Event Listeners
 */
 
 clearBtn.addEventListener('click', clearBoard);
+(mode === 'bot') ? p2NameText.innerHTML = 'Bot: <i class="far fa-circle"></i>' : ''
